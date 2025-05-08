@@ -2,432 +2,892 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <title>Dashboard | AutoBids - Revolutionizing Freelance Bidding with Cutting-Edge AI Technology</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Tailwind CSS AI Startup & Technology Saas & AI Software Landing Page Template, ai agency, ai application, ai business, ai, creative ai art, ai it solutions, modern web ai, multipurpose, saas, nft art, nft software, tailwind css." name="description" />
-    <meta content="coderthemes" name="author" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="/assets/images/favicon.ico">
+    <title>Dashboard | AutoBids</title>
 
-    <!--Swiper slider css-->
-    <link href="/assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css">
+    <meta property="og:url" content="https://AutoBids.co/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="AutoBids" />
+    <meta property="og:description" content="AutoBids is a tool which gives you upper hand to other freelancers" />
+    <meta property="og:image" content="https://cdn.bidman.co/images/logo.png" />
 
-    <!-- Glightbox Plugin css -->
-    <link href="/assets/libs/glightbox/css/glightbox.min.css" rel="stylesheet" type="text/css">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" href="https://cdn.bidman.co/images/favicon/favicon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="https://cdn.bidman.co/images/favicon/favicon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="https://cdn.bidman.co/images/favicon/favicon-180x180.png" sizes="180x180">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="https://cdn.bidman.co/images/favicon/favicon-144x144.png">
 
-    <!-- Style css -->
-    <link href="/assets/css/style.min.css" rel="stylesheet" type="text/css">
-    <link href="/assets/css/style.css" rel="stylesheet" type="text/css">
-
-    <!-- Icons css -->
-    <link href="/assets/css/icons.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Animation on Scroll css -->
-    <link href="/assets/libs/aos/aos.css" rel="stylesheet" type="text/css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" type="text/css">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
     <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --secondary: #60a5fa;
+            --dark-blue: #0f172a;
+            --medium-blue: #1e293b;
+            --light-blue: #334155;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --text-light: rgba(255, 255, 255, 0.9);
+            --text-lighter: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(59, 130, 246, 0.2);
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-blue);
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Background */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: twinkle var(--duration) infinite ease-in-out;
+            animation-delay: var(--delay);
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        
+        /* Animated Gradient Background */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(125deg, var(--dark-blue), var(--medium-blue), var(--light-blue), var(--medium-blue), var(--dark-blue));
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+        
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Glowing Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: -1;
+        }
+        
+        .orb-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--accent-purple), var(--primary));
+            top: -100px;
+            right: -100px;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--accent-pink), var(--primary));
+            bottom: -200px;
+            left: -200px;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+        
+        .orb-3 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--secondary), var(--primary));
+            top: 50%;
+            right: 10%;
+            animation: float 12s ease-in-out infinite 2s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-20px, -30px); }
+        }
+        
+        /* Navbar */
+        .navbar {
+            background-color: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 24px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-right: 40px;
+        }
+        
+        .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            padding: 8px 16px !important;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            margin: 0 5px;
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #fff !important;
+        }
+        
+        .nav-link.active {
+            background-color: rgba(59, 130, 246, 0.2);
+            color: var(--secondary) !important;
+        }
+        
+        /* Card Styles */
         .card {
-            width: 80%; /* Adjust as necessary */
-            border: 1px solid #ddd;
-            margin : 10px auto;
-            border-radius: 5px;
+            background-color: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        
+        .card-header {
+            background-color: rgba(15, 23, 42, 0.6);
+            border-bottom: 1px solid var(--border-color);
+            border-radius: 16px 16px 0 0 !important;
             padding: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            background: white;
         }
         
-        .header h1 {
-            font-size: 14px; /* Adjust to match the design */
-            color: #333;
-            margin-bottom: 10px;
+        .card-body {
+            padding: 24px;
         }
         
-        .sub-header {
-            font-size: 12px;
-            color: #666;
+        .card-footer {
+            background-color: rgba(15, 23, 42, 0.4);
+            border-top: 1px solid var(--border-color);
+            border-radius: 0 0 16px 16px !important;
+            padding: 16px 24px;
+        }
+        
+        /* Alert Styles */
+        .alert {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-light);
+        }
+        
+        .alert-success {
+            background: linear-gradient(90deg, rgba(53,27,49,1) 0%, rgba(102,29,58,1) 100%);
+            border-color: rgba(102,29,58,0.5);
+        }
+        
+        .alert-warning {
+            background-color: rgba(245, 158, 11, 0.1);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+        
+        /* Form Styles */
+        .form-control, .form-select {
+            background-color: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: #fff;
+            padding: 12px 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            background-color: rgba(15, 23, 42, 0.8);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+            color: #fff;
+        }
+        
+        /* Button Styles */
+        .btn {
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--primary-hover));
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(to right, var(--primary-hover), var(--primary));
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-success {
+            background: linear-gradient(to right, var(--success), #059669);
+            border: none;
+        }
+        
+        .btn-success:hover {
+            background: linear-gradient(to right, #059669, var(--success));
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-danger {
+            background: linear-gradient(to right, var(--danger), #b91c1c);
+            border: none;
+        }
+        
+        .btn-danger:hover {
+            background: linear-gradient(to right, #b91c1c, var(--danger));
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(to right, var(--warning), #d97706);
+            border: none;
+            color: white;
+        }
+        
+        .btn-warning:hover {
+            background: linear-gradient(to right, #d97706, var(--warning));
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+            color: white;
+        }
+        
+        .btn-sm {
+            padding: 6px 12px;
+            font-size: 14px;
+        }
+        
+        /* Dropdown Menu */
+        .dropdown-menu {
+            background-color: var(--medium-blue);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 12px 0;
+        }
+        
+        .dropdown-item {
+            color: var(--text-light);
+            padding: 10px 20px;
+            transition: all 0.2s ease;
+        }
+        
+        .dropdown-item:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #fff;
+        }
+        
+        .dropdown-divider {
+            border-top: 1px solid var(--border-color);
+            margin: 8px 0;
+        }
+        
+        /* Profile Image */
+        .img-profile {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+        }
+        
+        /* Project Card */
+        .project-card {
+            background-color: rgba(15, 23, 42, 0.4);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            padding: 20px;
             margin-bottom: 20px;
+            transition: all 0.3s ease;
         }
         
-        .footer {
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .project-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+        
+        .project-description {
+            font-size: 14px;
+            margin-bottom: 15px;
+            color: var(--text-lighter);
+            max-height: 100px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            -webkit-box-orient: vertical;
+        }
+        
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .project-meta-item {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .project-meta-item i {
+            margin-right: 8px;
+            color: var(--secondary);
+        }
+        
+        .project-skills {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .project-skill {
+            background-color: rgba(59, 130, 246, 0.2);
+            border-radius: 6px;
+            padding: 4px 10px;
+            margin: 0 8px 8px 0;
+            font-size: 12px;
+        }
+        
+        .project-actions {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            font-size: 12px;
         }
         
-        .time, .tags, .meta, .budget, .bid {
+        .project-actions-left {
+            display: flex;
+            align-items: center;
+        }
+        
+        .project-actions-right {
+            display: flex;
+            align-items: center;
+        }
+        
+        .project-actions-right .btn {
+            margin-left: 10px;
+        }
+        
+        /* Stats Cards */
+        .stats-card {
+            background-color: rgba(15, 23, 42, 0.4);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stats-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .stats-value {
+            font-size: 28px;
+            font-weight: 700;
             margin-bottom: 5px;
+            color: var(--text-light);
         }
         
-        .tags span, .meta span {
-            background: #f2f2f2;
-            padding: 5px;
-            border-radius: 3px;
-            margin-right: 5px;
+        .stats-label {
+            font-size: 14px;
+            color: var(--text-lighter);
         }
         
-        .payment-verified, .email-verified {
-            color: green;
+        /* Search Form */
+        .search-form {
+            background-color: rgba(15, 23, 42, 0.4);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            margin-bottom: 20px;
         }
         
-        .deposit-made, .identity-not-verified {
-            color: red;
+        .search-form .form-group {
+            margin-bottom: 15px;
         }
         
-        .budget {
-            font-weight: bold;
-            color: #333;
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
         }
         
-        .bid input {
-            padding: 5px;
-            margin-right: 5px;
+        .pagination .page-item .page-link {
+            background-color: rgba(15, 23, 42, 0.6);
+            border-color: var(--border-color);
+            color: var(--text-light);
+            margin: 0 5px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
         }
         
-        .bid button {
-            padding: 5px 10px;
-            background-color: #5cb85c;
-            color: white;
-            border: none;
-            border-radius: 3px;
-            cursor: pointer;
+        .pagination .page-item .page-link:hover {
+            background-color: rgba(59, 130, 246, 0.2);
+            border-color: var(--border-color);
+            color: var(--secondary);
         }
         
-        .bid button:hover {
-            background-color: #4cae4c;
+        .pagination .page-item.active .page-link {
+            background-color: rgba(59, 130, 246, 0.3);
+            border-color: var(--border-color);
+            color: var(--secondary);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .navbar-brand {
+                margin-right: 20px;
+            }
+            
+            .card-body {
+                padding: 16px;
+            }
+            
+            .project-meta {
+                flex-direction: column;
+            }
+            
+            .project-meta-item {
+                margin-right: 0;
+            }
+            
+            .project-actions {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .project-actions-right {
+                margin-top: 15px;
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .project-actions-right .btn {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
         }
     </style>
 </head>
 
-<body class="bg-default-900">
-    <div>
-        <div class="fixed top-0 -z-10">
-            <div class="blur-[200px] w-[500px] h-[500px] rounded-full bg-gradient-to-tl from-red-600/30 to-pink-600/30"></div>
-        </div>
-        <div class="fixed top-0 end-0 -z-10">
-            <div class="blur-[200px] w-[500px] h-[500px] rounded-full bg-gradient-to-tl from-red-600/30 to-pink-600/30"></div>
-        </div>
-        <div class="fixed inset-0 flex items-center justify-center -z-10">
-            <div class="blur-[200px] w-[500px] h-[500px] rounded-full bg-gradient-to-tl from-red-600/30 to-pink-600/30"></div>
-        </div>
-        <div class="fixed bottom-0 start-0 -z-10">
-            <div class="blur-[200px] w-[500px] h-[500px] rounded-full bg-gradient-to-tl from-red-600/30 to-pink-600/30"></div>
-        </div>
-        <div class="fixed bottom-0 end-0 -z-10">
-            <div class="blur-[200px] w-[500px] h-[500px] rounded-full bg-gradient-to-tl from-red-600/30 to-pink-600/30"></div>
-        </div>
-    </div><!-- end body bg gradient -->
+<body id="page-top">
+    <!-- Background Elements -->
+    <div class="gradient-bg"></div>
+    <div class="stars-container" id="stars-container"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    
+    <div id="wrapper">
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <!-- Navbar -->
+                <nav class="navbar navbar-expand navbar-dark mb-4 static-top shadow">
+                    <div class="container-fluid">
+                        <a class="navbar-brand position-relative" href="/myBids">
+                            <h2>
+                                <img style="height: 30px;" src="/images/bidmanwhite.png" alt="AutoBids Logo">
+                            </h2>
+                        </a>
 
-    <!-- Navbar Start -->
-    <header id="navbar-sticky" class="navbar">
-        <div class="container">
-            <nav>
-                <!-- Navbar Brand Logo -->
-                <a href="index-5.html" class="logo">
-                    <!--  <img src="/assets/images/logo.png" class="h-10" alt="WebAi Logo">  -->
-                   	<h2><image style="height: 30px;" src="/images/bidmanwhite.png"></image></h2>
-                </a>
-
-                <!-- Moblie Menu Toggle Button (Offcanvas Button) -->
-                <div class="lg:hidden flex items-center ms-auto px-2.5">
-                    <button class="hs-collapse-toggle inline-flex items-center justify-center h-9 w-12 rounded-md border border-white/20 bg-default-100/5" type="button" id="hs-unstyled-collapse" data-hs-collapse="#mobileMenu" data-hs-type="collapse">
-                        <i data-lucide="menu" class="h-5 w-5 stroke-white"></i>
-                    </button>
-                </div>
-
-                <!-- Nevigation Menu -->
-                <div id="mobileMenu" class="hs-collapse transition-all duration-300 lg:basis-auto basis-full grow hidden lg:flex items-center justify-center mx-auto mt-2 lg:mt-0">
-                    <ul id="navbar-navlist" class="navbar-nav">
-                        <!-- Home Page Link -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="/dashboard">Dashboard</a>
-                        </li>
-
-                        <!-- Service Page Link -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="#categories">My Bids</a>
-                        </li>
-
-                        <!-- Features Page Link -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="/dashboard">Search Projects</a>
-                        </li>
-
-                        <!-- Price Page Link -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="/settings">Settings</a>
-                        </li>
-
-                        <!-- Faq Page Link -->
-                        <li class="nav-item">
-                            <a class="nav-link" href="#faq">Profile</a>
-                        </li>
-
-                        
-                    </ul>
-                    <!-- Download Button -->
-                    <div class="lg:hidden flex items-center pt-4 mt-4 lg:pt-0 lg:mt-0 border-t border-white/10 lg:border-none">
-                        <a href="/logout" class="inline-flex items-center justify-center gap-2 bg-primary text-white py-2 px-6 rounded-full hover:bg-primary-hover transition-all duration-3"><i data-lucide="arrow-big-right-dash" class="h-5 w-5 me-2"></i> Logout</a>
-                    </div>
-                </div>
-                <!-- Download Button -->
-                <div class="hidden lg:flex items-center">
-                    <a href="/logout" class="inline-flex items-center justify-center gap-2 bg-primary text-white py-2 px-6 rounded-full hover:bg-primary-hover transition-all duration-300"><i data-lucide="arrow-big-right-dash" class="h-5 w-5 me-2"></i> Logout</a>
-                </div>
-            </nav><!-- end nav -->
-        </div>
-    </header>
-    <!-- Navbar End -->
-
-    <!-- Start -->
-    <section id="home" class="relative pt-[74px] overflow-hidden" style="margin-bottom : 50px">
-        <div class="card">
-            <div class="header">
-                <h1 style="font-weight : 700">Looking for an experimented ANDROID developer with ROOM livedata and foreground services</h1>
-            </div>
-            <p class="sub-header">Hello, we're looking for ANDROID JAVA developer for 1-2 weeks full time to work on add persistancy of Data in our app and activities screen Experience with ROOM Livedata and Foreground services required Goal is to...</p>
-            <div class="footer">
-                <span class="time">26 second ago — 0 bids</span>
-                <div class="tags">
-                    <span>Java,</span>
-                    <span>Mobile App Development,</span>
-                    <span>Android,</span>
-                    <span>Software Architecture</span>
-                </div>
-                <div class="meta">
-                    <span class="payment-verified">Payment verified</span>
-                    <span class="deposit-made">Deposit made</span>
-                    <span class="identity-not-verified">Identity not verified</span>
-                    <span class="email-verified">Email verified</span>
-                </div>
-                <div class="budget">
-                    <span>€30 - €100</span>
-                </div>
-                <div class="bid">
-                    <input type="number" placeholder="Your Bid">
-                    <button type="button">Place Bid</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="header">
-                <h1 style="font-weight : 700">Looking for an experimented ANDROID developer with ROOM livedata and foreground services</h1>
-            </div>
-            <p class="sub-header">Hello, we're looking for ANDROID JAVA developer for 1-2 weeks full time to work on add persistancy of Data in our app and activities screen Experience with ROOM Livedata and Foreground services required Goal is to...</p>
-            <div class="footer">
-                <span class="time">26 second ago — 0 bids</span>
-                <div class="tags">
-                    <span>Java,</span>
-                    <span>Mobile App Development,</span>
-                    <span>Android,</span>
-                    <span>Software Architecture</span>
-                </div>
-                <div class="meta">
-                    <span class="payment-verified">Payment verified</span>
-                    <span class="deposit-made">Deposit made</span>
-                    <span class="identity-not-verified">Identity not verified</span>
-                    <span class="email-verified">Email verified</span>
-                </div>
-                <div class="budget">
-                    <span>€30 - €100</span>
-                </div>
-                <div class="bid">
-                    <input type="number" placeholder="Your Bid">
-                    <button type="button">Place Bid</button>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="card">
-            <div class="header">
-                <h1 style="font-weight : 700">Looking for an experimented ANDROID developer with ROOM livedata and foreground services</h1>
-            </div>
-            <p class="sub-header">Hello, we're looking for ANDROID JAVA developer for 1-2 weeks full time to work on add persistancy of Data in our app and activities screen Experience with ROOM Livedata and Foreground services required Goal is to...</p>
-            <div class="footer">
-                <span class="time">26 second ago — 0 bids</span>
-                <div class="tags">
-                    <span>Java,</span>
-                    <span>Mobile App Development,</span>
-                    <span>Android,</span>
-                    <span>Software Architecture</span>
-                </div>
-                <div class="meta">
-                    <span class="payment-verified">Payment verified</span>
-                    <span class="deposit-made">Deposit made</span>
-                    <span class="identity-not-verified">Identity not verified</span>
-                    <span class="email-verified">Email verified</span>
-                </div>
-                <div class="budget">
-                    <span>€30 - €100</span>
-                </div>
-                <div class="bid">
-                    <input type="number" placeholder="Your Bid">
-                    <button type="button">Place Bid</button>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="card">
-            <div class="header">
-                <h1 style="font-weight : 700">Looking for an experimented ANDROID developer with ROOM livedata and foreground services</h1>
-            </div>
-            <p class="sub-header">Hello, we're looking for ANDROID JAVA developer for 1-2 weeks full time to work on add persistancy of Data in our app and activities screen Experience with ROOM Livedata and Foreground services required Goal is to...</p>
-            <div class="footer">
-                <span class="time">26 second ago — 0 bids</span>
-                <div class="tags">
-                    <span>Java,</span>
-                    <span>Mobile App Development,</span>
-                    <span>Android,</span>
-                    <span>Software Architecture</span>
-                </div>
-                <div class="meta">
-                    <span class="payment-verified">Payment verified</span>
-                    <span class="deposit-made">Deposit made</span>
-                    <span class="identity-not-verified">Identity not verified</span>
-                    <span class="email-verified">Email verified</span>
-                </div>
-                <div class="budget">
-                    <span>€30 - €100</span>
-                </div>
-                <div class="bid">
-                    <input type="number" placeholder="Your Bid">
-                    <button type="button">Place Bid</button>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="card">
-            <div class="header">
-                <h1 style="font-weight : 700">Looking for an experimented ANDROID developer with ROOM livedata and foreground services</h1>
-            </div>
-            <p class="sub-header">Hello, we're looking for ANDROID JAVA developer for 1-2 weeks full time to work on add persistancy of Data in our app and activities screen Experience with ROOM Livedata and Foreground services required Goal is to...</p>
-            <div class="footer">
-                <span class="time">26 second ago — 0 bids</span>
-                <div class="tags">
-                    <span>Java,</span>
-                    <span>Mobile App Development,</span>
-                    <span>Android,</span>
-                    <span>Software Architecture</span>
-                </div>
-                <div class="meta">
-                    <span class="payment-verified">Payment verified</span>
-                    <span class="deposit-made">Deposit made</span>
-                    <span class="identity-not-verified">Identity not verified</span>
-                    <span class="email-verified">Email verified</span>
-                </div>
-                <div class="budget">
-                    <span>€30 - €100</span>
-                </div>
-                <div class="bid">
-                    <input type="number" placeholder="Your Bid">
-                    <button type="button">Place Bid</button>
-                </div>
-            </div>
-        </div>
-    </section><!--end section-->
-    <!-- End -->
-
-
-   <!-- Footer section start -->
-<footer class="bg-default-950/40 backdrop-blur-3xl">
-    <div class="container lg:px-20">
-        <div class="flex flex-col lg:flex-row justify-between gap-14 py-24">
-            <!-- Left Side -->
-            <div class="lg:w-6/12">
-                <a href="#" class="flex items-center gap-2 logo">
-                    <h2><image style="height: 30px;" src="/images/bidmanclack.png"></image></h2>
-                </a>
-
-                <p class="text-default-200 text-sm font-medium max-w-xs mt-6">Revolutionizing Freelance Bidding With Cutting-Edge AI Technology</p>
-            </div>
-
-            <!-- Right Side -->
-            <div class="lg:w-6/12">
-                <div class="grid md:grid-cols- sm:grid-cols-2 gap-6">
-                    <div>
-                        <h5 class="text-default-200 text-base font-semibold mb-4 mt-6">Follow Us</h5>
-                        <ul class="flex flex-wrap items-center gap-1">
-                            <li>
-                                <a href="javascript:void(0);" class="h-8 w-8 inline-flex items-center justify-center border border-white/10 rounded-md transition-all duration-500 group hover:bg-primary">
-                                    <i data-lucide="facebook" class="h-4 w-4 text-default-300 group-hover:text-white"></i>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/myBids" role="button">
+                                    <span class="d-none d-sm-inline">My&nbsp;</span>Bids
                                 </a>
                             </li>
-                            <li>
-                                <a href="javascript:void(0);" class="h-8 w-8 inline-flex items-center justify-center border border-white/10 rounded-md transition-all duration-500 group hover:bg-primary">
-                                    <i data-lucide="instagram" class="h-4 w-4 text-default-300 group-hover:text-white"></i>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/search" role="button">
+                                    Search<span class="d-none d-sm-inline">&nbsp;Projects</span>
                                 </a>
                             </li>
-                            <li>
-                                <a href="javascript:void(0);" class="h-8 w-8 inline-flex items-center justify-center border border-white/10 rounded-md transition-all duration-500 group hover:bg-primary">
-                                    <i data-lucide="twitter" class="h-4 w-4 text-default-300 group-hover:text-white"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="javascript:void(0);" class="h-8 w-8 inline-flex items-center justify-center border border-white/10 rounded-md transition-all duration-500 group hover:bg-primary">
-                                    <i data-lucide="linkedin" class="h-4 w-4 text-default-300 group-hover:text-white"></i>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/bidai" role="button">
+                                    <span class="d-none d-sm-inline">AutoBids&nbsp;</span>AI
                                 </a>
                             </li>
                         </ul>
+
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <div class="d-none d-sm-block me-2 text-end">
+                                        <p class="text-light small m-0"><%= user.username %></p>
+                                    </div>
+                                    <i class="fas fa-chevron-down me-2 text-center" style="width: 20px;top: -2px;position: relative;"></i>
+                                    <span class="position-relative">
+                                        <img class="img-profile rounded-circle" src="<%= user.profilePicture ? user.profilePicture : 'https://cdn3.f-cdn.com/ppic/245304646/logo/75311776/profile_logo_75311776.jpg' %>">
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end shadow animated--grow-in" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item text-success" href="/autoBidTurnOn?autoBid=<%= userAutoBid === 'ON' ? 'Off' : 'ON' %>" style="font-weight: 600; font-size: 16px">
+                                        <i class="fas fa-check me-2 text-center" style="width: 20px"></i>
+                                        Autobidding is <%= userAutoBid==='ON' ? 'ON' : 'OFF' %> 
+                                        <div style="white-space: initial; font-size: 12px !important; padding: 5px 0px 0px; color: #a5b4fc; font-style: italic; font-weight: 500; line-height: 1.3;">
+                                            Turning on autobidding from here will not apply any bid or time limit
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/skills">
+                                        <i class="fas fa-heart me-2 text-center" style="width: 20px"></i>
+                                        Skills
+                                    </a>
+                                    <a class="dropdown-item" href="/skills-sets">
+                                        <i class="fas fa-layer-group me-2 text-center" style="width: 20px"></i>
+                                        Skill Sets
+                                    </a>
+                                    <a class="dropdown-item" href="/countries">
+                                        <i class="fas fa-flag me-2 text-center" style="width: 20px"></i>
+                                        Countries
+                                    </a>
+                                    <a class="dropdown-item" href="/client-stats">
+                                        <i class="fas fa-filter me-2 text-center" style="width: 20px"></i>
+                                        Client Stats
+                                    </a>
+                                    <a class="dropdown-item" href="/budget">
+                                        <i class="fas fa-dollar-sign me-2 text-center" style="width: 20px"></i>
+                                        Project Budget
+                                    </a>
+                                    <a class="dropdown-item" href="/bidPrice">
+                                        <i class="fas fa-gavel me-2 text-center" style="width: 20px"></i>
+                                        Bid Price
+                                    </a>
+                                    <a class="dropdown-item" href="/period">
+                                        <i class="far fa-clock me-2 text-center" style="width: 20px"></i>
+                                        Project Period
+                                    </a>
+                                    <a class="dropdown-item" href="/timeSetting">
+                                        <i class="far fa-clock me-2 text-center" style="width: 20px"></i>
+                                        Time Setting
+                                    </a>
+                                    <a class="dropdown-item" href="/tcats">
+                                        <i class="fas fa-sitemap me-2 text-center" style="width: 20px"></i>
+                                        Template Categories
+                                    </a>
+                                    <a class="dropdown-item" href="/temp">
+                                        <i class="fas fa-list-ul me-2 text-center" style="width: 20px"></i>
+                                        Templates
+                                    </a>
+                                    <a class="dropdown-item" href="/passChange">
+                                        <i class="fas fa-user-lock me-2 text-center" style="width: 20px"></i>
+                                        Change Password
+                                    </a>
+                                    <a class="dropdown-item" href="/skills">
+                                        <i class="fas fa-cog me-2 text-center" style="width: 20px"></i>
+                                        More Settings
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-video me-2 text-center" style="width: 20px"></i>
+                                        Demo Video
+                                    </a>
+                                    <a class="dropdown-item" href="/guide">
+                                        <i class="fas fa-book me-2 text-center" style="width: 20px"></i>
+                                        AutoBids Guide
+                                    </a>
+                                    <a class="dropdown-item" href="/logout">
+                                        <i class="fas fa-sign-out-alt me-2 text-center" style="width: 20px"></i>
+                                        Logout
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="container-fluid">
+                    <!-- Welcome Alert -->
+                    <div class="welcome-alert mb-4">
+                        <div class="alert alert-success alert-dismissible fade show p-0">
+                            <div class="px-4 py-3">
+                                <h4 class="alert-heading mt-2">Welcome to AutoBids!</h4>
+                                <p style="font-size: 17px;" class="mb-2">Please note your AutoBids username is: <strong><%= user.username %></strong></p>
+                                <p class="mb-2"><a href="#" class="text-decoration-underline">Click here to watch complete demo video of AutoBids</a></p>
+                                <p class="mb-0">Your 5-days free trial subscription has started.</p>
+                                <p class="mb-0"><strong>Click show more to view contact details.</strong></p>
+                            </div>
+                            <div class="px-4 pb-3">
+                                <div>
+                                    <p class="mb-3">Use this free trial period to explore all the features of AutoBids.</p>
+                                    <p class="mb-0">Follow these three important steps for getting started and making the most of your AutoBids experience:</p>
+                                    <p class="mb-0 ms-3"><strong><a href="/skills">1- Select project skills</a></strong> to stay notified with newly posted projects on which you love to work.</p>
+                                    <p class="mb-0 ms-3"><strong><a href="/temp">2- Write awesome proposals</a></strong> to take full advantage of quick and auto bidding using AutoBids.</p>
+                                    <p class="mb-3 ms-3"><strong><a href="/search">3- Start Autobidding</a></strong> and let AutoBids place bid on newly posted projects within seconds.</p>
+                                    <p class="mb-0">For contact detail verification, queries or payment information, please contact us at:</p>
+                                    <p class="mb-0 ms-3">• Whatsapp: <strong><a href=""><%= adminPhone %></a></strong></p>
+                                    <p class="mb-0 ms-3">• Email: <strong><a href="mailto:<%= adminEmail %>"><%= adminEmail %></a></strong></p>
+                                    <p class="mb-0 ms-3">• Skype: <strong><%= adminSkype %></strong></p>
+                                    <p class="mb-3 ms-3">• Telegram: <strong><a href=""><%= adminTelegram %></a></strong></p>
+                                    <p class="mb-2"><a href="/guide">Click here to read guide to help understand AutoBids</a></p>
+                                    <p class="mb-0">Happy bidding</p>
+                                </div>
+                            </div>
+                            <button type="button" class="btn-close btn-close-white me-3 mt-3" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+
+                    <!-- Stats Row -->
+                    <div class="row mb-4">
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="stats-card">
+                                <div class="stats-icon">
+                                    <i class="fas fa-gavel"></i>
+                                </div>
+                                <div class="stats-value"><%= totalBids %></div>
+                                <div class="stats-label">Total Bids</div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="stats-card">
+                                <div class="stats-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="stats-value"><%= successfulBids %></div>
+                                <div class="stats-label">Successful Bids</div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="stats-card">
+                                <div class="stats-icon">
+                                    <i class="fas fa-search"></i>
+                                </div>
+                                <div class="stats-value"><%= projectsFound %></div>
+                                <div class="stats-label">Projects Found</div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="stats-card">
+                                <div class="stats-icon">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                                <div class="stats-value"><%= bidCredits %></div>
+                                <div class="stats-label">Bid Credits</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Search Form -->
+                    <div class="search-form mb-4">
+                        <form method="GET" action="/search">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="search-keyword">Keyword</label>
+                                        <input type="text" class="form-control" id="search-keyword" name="keyword" placeholder="Enter keyword">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="search-budget-min">Min Budget</label>
+                                        <input type="number" class="form-control" id="search-budget-min" name="budget_min" placeholder="Min">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="search-budget-max">Max Budget</label>
+                                        <input type="number" class="form-control" id="search-budget-max" name="budget_max" placeholder="Max">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="search-skills">Skills</label>
+                                        <select class="form-select" id="search-skills" name="skills" multiple>
+                                            <% skills.forEach(skill => { %>
+                                                <option value="<%= skill._id %>"><%= skill.name %></option>
+                                            <% }); %>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="search-type">Project Type</label>
+                                        <select class="form-select" id="search-type" name="type">
+                                            <option value="">All Types</option>
+                                            <option value="fixed">Fixed Price</option>
+                                            <option value="hourly">Hourly Rate</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-12 text-end">
+                                    <button type="submit" class="btn btn-primary">Search Projects</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- Projects List -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                            <h5 class="m-0 text-primary">Recent Projects</h5>
+                            <div>
+                                <a href="/search" class="btn btn-primary btn-sm">View All Projects</a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <% if (projects && projects.length > 0) { %>
+                                <% projects.forEach(project => { %>
+                                    <div class="project-card">
+                                        <div class="project-title"><%= project.title %></div>
+                                        <div class="project-description"><%= project.description %></div>
+                                        <div class="project-meta">
+                                            <div class="project-meta-item">
+                                                <i class="fas fa-dollar-sign"></i>
+                                                <span><%= project.budget_min %> - <%= project.budget_max %> <%= project.currency %></span>
+                                            </div>
+                                            <div class="project-meta-item">
+                                                <i class="fas fa-user"></i>
+                                                <span><%= project.client_name %></span>
+                                            </div>
+                                            <div class="project-meta-item">
+                                                <i class="fas fa-flag"></i>
+                                                <span><%= project.client_country %></span>
+                                            </div>
+                                            <div class="project-meta-item">
+                                                <i class="fas fa-clock"></i>
+                                                <span><%= project.posted_time %></span>
+                                            </div>
+                                        </div>
+                                        <div class="project-skills">
+                                            <% project.skills.forEach(skill => { %>
+                                                <div class="project-skill"><%= skill %></div>
+                                            <% }); %>
+                                        </div>
+                                        <div class="project-actions">
+                                            <div class="project-actions-left">
+                                                <span class="text-muted">Project ID: <%= project.project_id %></span>
+                                            </div>
+                                            <div class="project-actions-right">
+                                                <a href="/project/<%= project._id %>" class="btn btn-primary btn-sm">View Details</a>
+                                                <a href="/bid/<%= project._id %>" class="btn btn-success btn-sm">Place Bid</a>
+                                                <a href="/autobid/<%= project._id %>" class="btn btn-warning btn-sm">Auto Bid</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <% }); %>
+                            <% } else { %>
+                                <div class="text-center py-5">
+                                    <i class="fas fa-search fa-3x mb-3 text-muted"></i>
+                                    <p class="mb-0">No projects found. Try adjusting your search criteria or check back later.</p>
+                                </div>
+                            <% } %>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div><!-- Grid End -->
-    </div><!-- Container End -->
-</footer>
-<!-- Footer section end -->
+        </div>
+    </div>
 
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create animated stars
+            const starsContainer = document.getElementById('stars-container');
+            const starsCount = 100;
 
-        <div class="border-t border-white/10 py-6">
-            <div class="container lg:px-20 flex flex-wrap justify-center items-center gap-4 h-full md:justify-between text-center md:text-start">
-                <p class="text-base font-medium text-default-400">
-                    <script>document.write(new Date().getFullYear())</script>
-                    © AutoBids
-                </p>
-                <p class="text-base font-medium text-default-400">
-                    <a href="#">Terms Conditions & Policy</a>
-                </p>
-            </div><!-- Flex End -->
-        </div><!-- Container End -->
-    </footer>
-    <!-- Footer section End -->
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
 
-    <!-- Back To Top Start -->
-    <button id="back-to-top" onclick="topFunction()" class="fixed text-xl rounded-full z-10 bottom-5 end-5 h-8 w-8 text-center bg-white backdrop-blur-3xl text-default-950 flex justify-center items-center transition-all duration-500 hover:bg-primary hover:text-white hover:rounded-lg">
-        <i data-lucide="chevron-up" class="h-4 w-4"></i>
-    </button>
-    <!-- Back To Top End -->
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                const size = Math.random() * 2 + 1;
+                const duration = Math.random() * 3 + 2;
+                const delay = Math.random() * 5;
 
-    <!-- Plugin Js -->
-    <script src="/assets/libs/preline/preline.js"></script>
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.setProperty('--duration', `${duration}s`);
+                star.style.setProperty('--delay', `${delay}s`);
 
-    <!-- swiper -->
-    <script src="/assets/libs/swiper/swiper-bundle.min.js"></script>
-
-    <!-- Gumshoejs -->
-    <script src="/assets/libs/gumshoejs/gumshoe.polyfills.min.js"></script>
-    <script src="/assets/libs/glightbox/js/glightbox.min.js"></script>
-
-    <!-- Lucid Icons -->
-    <script src="/assets/libs/lucide/umd/lucide.min.js"></script>
-
-    <!-- Animation on Scroll Plugin Js -->
-    <script src="/assets/libs/aos/aos.js"></script>
-
-    <!-- Counter Js -->
-    <script src="/assets/js/counter.js"></script>
-
-    <!-- Glightbox Js -->
-    <script src="/assets/js/glightbox.js"></script>
-
-    <!-- Theme Js -->
-    <script src="/assets/js/theme.js"></script>
-    <script src="https://kit.fontawesome.com/ee50fd34bc.js" crossorigin="anonymous"></script>
-
+                starsContainer.appendChild(star);
+            }
+        });
+    </script>
 </body>
-
 </html>

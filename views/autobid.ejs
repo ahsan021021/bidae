@@ -2,531 +2,826 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>Manage Autobidding | Autobids</title>
+    <title>Manage Autobidding | AutoBids</title>
 
-	<meta property="og:url" content="https://Autobids.co/" />
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content="Autobids" />
-	<meta property="og:description" content="Autobids is a tool which gives you upper hand to other freelancers" />
-	<meta property="og:image" content="https://cdn.bidman.co/images/logo.png" />
+    <meta property="og:url" content="https://AutoBids.co/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="AutoBids" />
+    <meta property="og:description" content="AutoBids is a tool which gives you upper hand to other freelancers" />
+    <meta property="og:image" content="https://cdn.bidman.co/images/logo.png" />
 
-	<!-- <link rel="icon" href="https://cdn.bidman.co/images/favicon/favicon-32x32.png" sizes="32x32">
-	<link rel="icon" href="https://cdn.bidman.co/images/favicon/favicon-57x57.png" sizes="57x57">
-	<link rel="icon" href="https://cdn.bidman.co/images/favicon/favicon-76x76.png" sizes="76x76">
-	<link rel="icon" href="https://cdn.bidman.co/images/favicon/favicon-96x96.png" sizes="96x96">
-	<link rel="icon" href="https://cdn.bidman.co/images/favicon/favicon-128x128.png" sizes="128x128">
-	<link rel="icon" href="https://cdn.bidman.co/images/favicon/favicon-192x192.png" sizes="192x192">
-	<link rel="icon" href="https://cdn.bidman.co/images/favicon/favicon-228x228.png" sizes="228x228">
-	<link rel="shortcut icon" sizes="196x196" href="https://cdn.bidman.co/images/favicon/favicon-196x196.png"> -->
-	<link rel="apple-touch-icon" href="https://cdn.bidman.co/images/favicon/favicon-120x120.png" sizes="120x120">
-	<link rel="apple-touch-icon" href="https://cdn.bidman.co/images/favicon/favicon-152x152.png" sizes="152x152">
-	<link rel="apple-touch-icon" href="https://cdn.bidman.co/images/favicon/favicon-180x180.png" sizes="180x180">
-	<meta name="theme-color" content="#012B46">
-	<meta name="msapplication-TileColor" content="#FFFFFF">
-	<meta name="msapplication-TileImage" content="https://cdn.bidman.co/images/favicon/favicon-144x144.png">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" href="https://cdn.bidman.co/images/favicon/favicon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="https://cdn.bidman.co/images/favicon/favicon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="https://cdn.bidman.co/images/favicon/favicon-180x180.png" sizes="180x180">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="https://cdn.bidman.co/images/favicon/favicon-144x144.png">
 
-	<link href="https://cdn.bidman.co/app_assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
-		type="text/css">
-	<link
-		href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-		rel="stylesheet">
-	<link href="https://cdn.bidman.co/app_assets/css/sb-admin-2.min.css?v=11" rel="stylesheet">
-	<link href="https://cdn.bidman.co/app_assets/vendor/bootstrap4-toggle/css/bootstrap4-toggle.min.css"
-		rel="stylesheet">
-
-	<style type="text/css">
-		.bg-gradient-primary {
-			background-color: #2d4999;
-			background-image: linear-gradient(180deg, #2d4999 10%, #0a236a 100%);
-		}
-
-		li.text-light {
-			color: #efefef !important;
-		}
-
-		li.text-light b {
-			color: #ffffff !important;
-		}
-
-		.toggle-handle {
-			padding: 0.375rem 1rem;
-		}
-
-		.toggle-off {
-			color: #222;
-		}
-
-		.toggle.btn-light.off .toggle-handle {
-			background-color: #d31a08;
-		}
-
-		.toggle-on {
-			color: #222;
-		}
-
-		.toggle.btn-light:not(.off) .toggle-handle {
-			background-color: #0da16b;
-		}
-
-		.toggle-off:hover,
-		.toggle-off:active,
-		.toggle-on:hover,
-		.toggle-on:active {
-			color: #222;
-			background-color: #f2f2f2
-		}
-
-		.form-control,
-		.form-control:focus,
-		.form-control:active {
-			color: #222;
-		}
-	</style>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" type="text/css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Toggle -->
+    <link href="https://cdn.bidman.co/app_assets/vendor/bootstrap4-toggle/css/bootstrap4-toggle.min.css" rel="stylesheet">
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --secondary: #60a5fa;
+            --dark-blue: #0f172a;
+            --medium-blue: #1e293b;
+            --light-blue: #334155;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --text-light: rgba(255, 255, 255, 0.9);
+            --text-lighter: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(59, 130, 246, 0.2);
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-blue);
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Background */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: twinkle var(--duration) infinite ease-in-out;
+            animation-delay: var(--delay);
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        
+        /* Animated Gradient Background */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(125deg, var(--dark-blue), var(--medium-blue), var(--light-blue), var(--medium-blue), var(--dark-blue));
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+        
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Glowing Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: -1;
+        }
+        
+        .orb-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--accent-purple), var(--primary));
+            top: -100px;
+            right: -100px;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--accent-pink), var(--primary));
+            bottom: -200px;
+            left: -200px;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+        
+        .orb-3 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--secondary), var(--primary));
+            top: 50%;
+            right: 10%;
+            animation: float 12s ease-in-out infinite 2s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-20px, -30px); }
+        }
+        
+        /* Navbar */
+        .navbar {
+            background-color: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 24px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-right: 40px;
+        }
+        
+        .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            padding: 8px 16px !important;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            margin: 0 5px;
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #fff !important;
+        }
+        
+        .nav-link.active {
+            background-color: rgba(59, 130, 246, 0.2);
+            color: var(--secondary) !important;
+        }
+        
+        /* Card Styles */
+        .card {
+            background-color: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        
+        .card-header {
+            background-color: rgba(15, 23, 42, 0.6);
+            border-bottom: 1px solid var(--border-color);
+            border-radius: 16px 16px 0 0 !important;
+            padding: 20px;
+        }
+        
+        .card-body {
+            padding: 24px;
+        }
+        
+        .card-footer {
+            background-color: rgba(15, 23, 42, 0.4);
+            border-top: 1px solid var(--border-color);
+            border-radius: 0 0 16px 16px !important;
+            padding: 16px 24px;
+        }
+        
+        /* Alert Styles */
+        .alert {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-light);
+        }
+        
+        .alert-success {
+            background: linear-gradient(90deg, rgba(53,27,49,1) 0%, rgba(102,29,58,1) 100%);
+            border-color: rgba(102,29,58,0.5);
+        }
+        
+        .alert-warning {
+            background-color: rgba(245, 158, 11, 0.1);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+        
+        /* Form Styles */
+        .form-control {
+            background-color: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: #fff;
+            padding: 12px 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            background-color: rgba(15, 23, 42, 0.8);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+            color: #fff;
+        }
+        
+        label {
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: var(--text-light);
+        }
+        
+        /* Button Styles */
+        .btn {
+            border-radius: 8px;
+            padding: 10px 20px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(to right, var(--primary), var(--primary-hover));
+            border: none;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(to right, var(--primary-hover), var(--primary));
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+        
+        .btn-success {
+            background: linear-gradient(to right, var(--success), #059669);
+            border: none;
+        }
+        
+        .btn-success:hover {
+            background: linear-gradient(to right, #059669, var(--success));
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-light {
+            background: linear-gradient(to right, #f3f4f6, #e5e7eb);
+            border: none;
+            color: var(--dark-blue);
+        }
+        
+        .btn-light:hover {
+            background: linear-gradient(to right, #e5e7eb, #d1d5db);
+            color: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Toggle Button Styles */
+        .toggle.btn {
+            min-width: 120px;
+        }
+        
+        .toggle-handle {
+            background-color: #fff;
+            border-radius: 20px;
+        }
+        
+        .toggle.btn-light.off .toggle-handle {
+            background-color: #d31a08;
+        }
+        
+        .toggle.btn-light:not(.off) .toggle-handle {
+            background-color: #0da16b;
+        }
+        
+        .toggle-on, .toggle-off {
+            font-weight: 600;
+        }
+        
+        /* Custom Styles for Autobidding Card */
+        .bg-ai-blue {
+            background-color: #229ba1;
+            background-image: linear-gradient(180deg, rgba(9, 121, 126, 0.85) 10%, rgba(1, 57, 62, 0.85) 100%), url(https://cdn.bidman.co/images/ai_bg.png);
+            background-size: cover;
+            background-position: center;
+            border: none;
+        }
+        
+        /* Welcome Alert */
+        .welcome-alert {
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        .welcome-alert .alert-heading {
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .welcome-alert a {
+            color: inherit;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        
+        .welcome-alert a:hover {
+            text-decoration: none;
+        }
+        
+        /* Contact Alert */
+        .contact-alert {
+            border-radius: 12px;
+        }
+        
+        /* Dropdown Menu */
+        .dropdown-menu {
+            background-color: var(--medium-blue);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 12px 0;
+        }
+        
+        .dropdown-item {
+            color: var(--text-light);
+            padding: 10px 20px;
+            transition: all 0.2s ease;
+        }
+        
+        .dropdown-item:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #fff;
+        }
+        
+        .dropdown-divider {
+            border-top: 1px solid var(--border-color);
+            margin: 8px 0;
+        }
+        
+        /* Profile Image */
+        .img-profile {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+        }
+        
+        /* Summary Section */
+        .div-summary {
+            background-color: rgba(15, 23, 42, 0.4);
+            border-radius: 12px;
+            padding: 16px;
+            margin-top: 20px;
+        }
+        
+        .div-summary p {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .div-summary ul {
+            padding-left: 20px;
+        }
+        
+        .div-summary li {
+            margin-bottom: 8px;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .navbar-brand {
+                margin-right: 20px;
+            }
+            
+            .card-body {
+                padding: 16px;
+            }
+        }
+    </style>
 </head>
 
-<body id="page-top" class="sidebar-toggled">
-	<div id="wrapper">
+<body id="page-top">
+    <!-- Background Elements -->
+    <div class="gradient-bg"></div>
+    <div class="stars-container" id="stars-container"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    
+    <div id="wrapper">
+        <div id="content-wrapper" class="d-flex flex-column">
+            <div id="content">
+                <!-- Navbar -->
+                <nav class="navbar navbar-expand navbar-dark topbar mb-4 static-top shadow">
+                    <div class="container-fluid">
+                        <a class="navbar-brand position-relative" href="/myBids">
+                            <h2>
+                                <img style="height: 30px;" src="/images/bidmanclack.png" alt="AutoBids Logo">
+                            </h2>
+                        </a>
 
-		<div id="content-wrapper" class="d-flex flex-column">
-			<div id="content">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/myBids" role="button">
+                                    <span class="d-none d-sm-inline">My&nbsp;</span>Bids
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/search" role="button">
+                                    Search<span class="d-none d-sm-inline">&nbsp;Projects</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/bidai" role="button">
+                                    <span class="d-none d-sm-inline">AutoBids&nbsp;</span>AI
+                                </a>
+                            </li>
+                        </ul>
 
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <div class="d-none d-sm-block me-2 text-end">
+                                        <p class="text-light small m-0"><%= user.username %></p>
+                                    </div>
+                                    <i class="fas fa-chevron-down me-2 text-center" style="width: 20px;top: -2px;position: relative;"></i>
+                                    <span class="position-relative">
+                                        <img class="img-profile rounded-circle" src="<%= user.profilePicture ? user.profilePicture : 'https://cdn3.f-cdn.com/ppic/245304646/logo/75311776/profile_logo_75311776.jpg' %>">
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end shadow animated--grow-in" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item text-success" href="/autoBidTurnOn?autoBid=<%= userAutoBid === 'ON' ? 'Off' : 'ON' %>" style="font-weight: 600; font-size: 16px">
+                                        <i class="fas fa-check me-2 text-center" style="width: 20px"></i>
+                                        Autobidding is <%= userAutoBid==='ON' ? 'ON' : 'OFF' %> 
+                                        <div style="white-space: initial; font-size: 12px !important; padding: 5px 0px 0px; color: #a5b4fc; font-style: italic; font-weight: 500; line-height: 1.3;">
+                                            Turning on autobidding from here will not apply any bid or time limit
+                                        </div>
+                                    </a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/skills">
+                                        <i class="fas fa-heart me-2 text-center" style="width: 20px"></i>
+                                        Skills
+                                    </a>
+                                    <a class="dropdown-item" href="/skills-sets">
+                                        <i class="fas fa-layer-group me-2 text-center" style="width: 20px"></i>
+                                        Skill Sets
+                                    </a>
+                                    <a class="dropdown-item" href="/countries">
+                                        <i class="fas fa-flag me-2 text-center" style="width: 20px"></i>
+                                        Countries
+                                    </a>
+                                    <a class="dropdown-item" href="/client-stats">
+                                        <i class="fas fa-filter me-2 text-center" style="width: 20px"></i>
+                                        Client Stats
+                                    </a>
+                                    <a class="dropdown-item" href="/budget">
+                                        <i class="fas fa-dollar-sign me-2 text-center" style="width: 20px"></i>
+                                        Project Budget
+                                    </a>
+                                    <a class="dropdown-item" href="/bidPrice">
+                                        <i class="fas fa-gavel me-2 text-center" style="width: 20px"></i>
+                                        Bid Price
+                                    </a>
+                                    <a class="dropdown-item" href="/period">
+                                        <i class="far fa-clock me-2 text-center" style="width: 20px"></i>
+                                        Project Period
+                                    </a>
+                                    <a class="dropdown-item" href="/timeSetting">
+                                        <i class="far fa-clock me-2 text-center" style="width: 20px"></i>
+                                        Time Setting
+                                    </a>
+                                    <a class="dropdown-item" href="/tcats">
+                                        <i class="fas fa-sitemap me-2 text-center" style="width: 20px"></i>
+                                        Template Categories
+                                    </a>
+                                    <a class="dropdown-item" href="/temp">
+                                        <i class="fas fa-list-ul me-2 text-center" style="width: 20px"></i>
+                                        Templates
+                                    </a>
+                                    <a class="dropdown-item" href="/passChange">
+                                        <i class="fas fa-user-lock me-2 text-center" style="width: 20px"></i>
+                                        Change Password
+                                    </a>
+                                    <a class="dropdown-item" href="/skills">
+                                        <i class="fas fa-cog me-2 text-center" style="width: 20px"></i>
+                                        More Settings
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-video me-2 text-center" style="width: 20px"></i>
+                                        Demo Video
+                                    </a>
+                                    <a class="dropdown-item" href="/guide">
+                                        <i class="fas fa-book me-2 text-center" style="width: 20px"></i>
+                                        AutoBids Guide
+                                    </a>
+                                    <a class="dropdown-item" href="/logout">
+                                        <i class="fas fa-sign-out-alt me-2 text-center" style="width: 20px"></i>
+                                        Logout
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
 
-				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+                <div class="container-fluid">
+                    <!-- Welcome Alert -->
+                    <div class="welcome-alert mb-4">
+                        <div class="alert alert-success alert-dismissible fade show p-0">
+                            <div class="px-4 py-3">
+                                <h4 class="alert-heading mt-2">Welcome to AutoBids!</h4>
+                                <p style="font-size: 17px;" class="mb-2">Please note your AutoBids username is: <strong><%= user.username %></strong></p>
+                                <p class="mb-2"><a href="#" class="text-decoration-underline">Click here to watch complete demo video of AutoBids</a></p>
+                                <p class="mb-0">Your 5-days free trial subscription has started.</p>
+                                <p class="mb-0"><strong>Click show more to view contact details.</strong></p>
+                            </div>
+                            <div class="px-4 pb-3">
+                                <div>
+                                    <p class="mb-3">Use this free trial period to explore all the features of AutoBids.</p>
+                                    <p class="mb-0">Follow these three important steps for getting started and making the most of your AutoBids experience:</p>
+                                    <p class="mb-0 ms-3"><strong><a href="/skills">1- Select project skills</a></strong> to stay notified with newly posted projects on which you love to work.</p>
+                                    <p class="mb-0 ms-3"><strong><a href="/temp">2- Write awesome proposals</a></strong> to take full advantage of quick and auto bidding using AutoBids.</p>
+                                    <p class="mb-3 ms-3"><strong><a href="/search">3- Start Autobidding</a></strong> and let AutoBids place bid on newly posted projects within seconds.</p>
+                                    <p class="mb-0">For contact detail verification, queries or payment information, please contact us at:</p>
+                                    <p class="mb-0 ms-3">• Whatsapp: <strong><a href=""><%= adminPhone %></a></strong></p>
+                                    <p class="mb-0 ms-3">• Email: <strong><a href="mailto:<%= adminEmail %>"><%= adminEmail %></a></strong></p>
+                                    <p class="mb-0 ms-3">• Skype: <strong><%= adminSkype %></strong></p>
+                                    <p class="mb-3 ms-3">• Telegram: <strong><a href=""><%= adminTelegram %></a></strong></p>
+                                    <p class="mb-2"><a href="/guide">Click here to read guide to help understand AutoBids</a></p>
+                                    <p class="mb-0">Happy bidding</p>
+                                </div>
+                            </div>
+                            <button type="button" class="btn-close btn-close-white me-3 mt-3" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
 
-					<a class="navbar-brand position-relative" href="/myBids>
-						<h2>
-							<image style="height: 30px;" src="/images/bidmanclack.png"></image>
-						</h2>
-					</a>
+                    <!-- Contact Alert -->
+                    <div class="contact-alert mb-4">
+                        <div class="alert p-4 text-white rounded shadow-sm">
+                            <p class="mb-1">You currently have a limit of 50 bids. But don't worry, by verifying your contact details, you can unlock 500 bids! 🚀</p>
+                            <p class="mb-1">It's simple, just contact us at any of these:</p>
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-6 col-md-8 order-md-0 order-lg-0">
+                                    <p class="mb-0 ms-3" style="font-size: 14px">• Whatsapp: <a href="" class="text-white"><%= adminPhone %></a></p>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 col-md-8 order-md-2 order-lg-0">
+                                    <p class="mb-0 ms-3" style="font-size: 14px">• Email: <a href="mailto:<%= adminEmail %>" class="text-white"><%= adminEmail %></a></p>
+                                </div>
+                                <div class="col-xl-2 col-lg-6 col-md-4 order-md-1 order-lg-0">
+                                    <p class="mb-0 ms-3" style="font-size: 14px">• Telegram: <a href="" class="text-white"><%= adminTelegram %></a></p>
+                                </div>
+                                <div class="col-xl-2 col-lg-6 col-md-4 order-md-1 order-lg-0">
+                                    <p class="mb-0 ms-3" style="font-size: 14px">• Skype: <a href="" class="text-white"><%= adminSkype %></a></p>
+                                </div>
+                            </div>
+                            <p class="mt-2 mb-0">Bonus: Get FREE AI bids when you contact us! 🎉</p>
+                        </div>
+                    </div>
 
-					<ul class="navbar-nav">
-						<li class="nav-item">
-							<a class="nav-link text-dark" style="font-size: 15px;" href="/myBids" role="button"><span
-									class="d-none d-sm-block">My&nbsp;</span>Bids</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" style="font-size: 15px;" href="/search"
-								role="button">Search<span class="d-none d-sm-block">&nbsp;Projects</span></a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" style="font-size: 15px; color: #FE6500; font-weight: 600" href="/bidai"
-								role="button"><span class="d-none d-sm-block">Autobids&nbsp;</span>AI</a>
-						</li>
-					</ul>
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item dropdown no-arrow">
-							<a class="nav-link dropdown-toggle" style="font-size: 15px;" href="#" id="userDropdown"
-								role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<div class="d-none d-sm-block mr-sm-2 text-right">
-									<p class="text-gray-600 small m-0">
-										<%= user.username %>
-									</p>
-								</div>
-								<i class="fas fa-chevron-down mr-2 text-center text-dark"
-									style="width: 20px;top: -2px;position: relative;"></i>
-								<span class="position-relative">
-									<img class="img-profile rounded-circle"
-										src="<%= user.profilePicture ? user.profilePicture : 'https://cdn3.f-cdn.com/ppic/245304646/logo/75311776/profile_logo_75311776.jpg' %>">
-								</span>
-							</a>
-							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-								aria-labelledby="userDropdown">
-								<a class="dropdown-item text-success"
-									href="/autoBidTurnOn?autoBid=<%= userAutoBid === 'ON' ? 'Off' : 'ON' %>"
-									style="font-weight: 600; font-size: 16px">
-									<i class="fas fa-check mr-2 text-center" style="width: 20px"></i>
-									Autobidding is <%= userAutoBid==='ON' ? 'ON' : 'OFF' %> 
-										<div
-											style="white-space: initial; font-size: 12px !important; padding: 5px 0px 0px; color: #3a3b45; font-style: italic; font-weight: 500; line-height: 1.3;">
-											Turning on autobidding from here will not apply any bid or time limit</div>
-								</a>
-								<div class="dropdown-divider"></div>
-								<!-- <a class="dropdown-item" href="/settings" style="color: #18557F;">
-									<i class="fas fa-user-secret mr-2 text-center" style="width: 20px"></i>
-									Autobidding Settings
-								</a> -->
-								<a class="dropdown-item" href="/skills">
-									<i class="fas fa-heart mr-2 text-center" style="width: 20px"></i>
-									Skills
-								</a>
-								<a class="dropdown-item" href="/skills-sets">
-									<i class="fas fa-layer-group mr-2 text-center" style="width: 20px"></i>
-									Skill Sets
-								</a>
-								<a class="dropdown-item" href="/countries">
-									<i class="fas fa-flag mr-2 text-center" style="width: 20px"></i>
-									Countries
-								</a>
-								<a class="dropdown-item" href="/client-stats">
-									<i class="fas fa-filter mr-2 text-center" style="width: 20px"></i>
-									Client Stats
-								</a>
-								<a class="dropdown-item" href="/budget">
-									<i class="fas fa-dollar-sign mr-2 text-center" style="width: 20px"></i>
-									Project Budget
-								</a>
-								<a class="dropdown-item" href="/bidPrice">
-									<i class="fas fa-gavel mr-2 text-center" style="width: 20px"></i>
-									Bid Price
-								</a>
-								<a class="dropdown-item" href="/period">
-									<i class="far fa-clock mr-2 text-center" style="width: 20px"></i>
-									Project Period
-								</a>
-								<a class="dropdown-item" href="/timeSetting">
-									<i class="far fa-clock mr-2 text-center" style="width: 20px"></i>
-									Time Setting
-								</a>
-								<a class="dropdown-item" href="/tcats">
-									<i class="fas fa-sitemap mr-2 text-center" style="width: 20px"></i>
-									Template Categories
-								</a>
-								<a class="dropdown-item" href="/temp">
-									<i class="fas fa-list-ul mr-2 text-center" style="width: 20px"></i>
-									Templates
-								</a>
-								<a class="dropdown-item" href="/passChange">
-									<i class="fas fa-user-lock mr-2 text-center" style="width: 20px"></i>
-									Change Password
-								</a>
-								<a class="dropdown-item" href="/skills">
-									<i class="fas fa-cog mr-2 text-center" style="width: 20px"></i>
-									More Settings
-								</a>
-								<a class="dropdown-item" href="#">
-									<i class="fas fa-video mr-2 text-center" style="width: 20px"></i>
-									Demo Video
-								</a>
-								<a class="dropdown-item" href="/guide">
-									<i class="fas fa-book mr-2 text-center" style="width: 20px"></i>
-									AutoBids Guide
-								</a>
-								<a class="dropdown-item" href="/logout">
-									<i class="fas fa-sign-out-alt mr-2 text-center" style="width: 20px"></i>
-									Logout
-								</a>
-							</div>
-						</li>
-					</ul>
-				</nav>
+                    <!-- Autobidding Form -->
+                    <form method="POST" action="autobid.php">
+                        <div class="card shadow mb-4 bg-ai-blue">
+                            <div class="card-body">
+                                <h4 class="h4 mb-2 text-white">Manage Autobidding</h4>
+                                <p class="mb-4 text-white opacity-90">Configure your autobidding by setting time interval, time limit and bids limit.</p>
+                                
+                                <div class="d-flex flex-wrap gap-3">
+                                    <div class="form-group">
+                                        <label class="d-block mb-2 text-white">Status</label>
+                                        <input type="checkbox" name="autobid_status" id="input-autobid_status" value="true" data-toggle="toggle" data-on="  name="autobid_status" id="input-autobid_status" value="true" data-toggle="toggle" data-on="Enabled" data-onstyle="light" data-off="Disabled" data-offstyle="light" data-height="38" data-width="120">
+                                    </div>
 
-				<div class="container-fluid d-flex flex-wrap"></div>
-				<div class="container-fluid d-flex flex-wrap mb-2">
-					<div class="admin-alert w-100" data-code="onboarding-welcome">
-						<div class="alert-success alert-dismissible fade show p-0" style="padding-top: 5px; margin-bottom: 5px;  background: rgb(53,27,49);
-background: linear-gradient(90deg, rgba(53,27,49,1) 0%, rgba(102,29,58,1) 100%); color: white !important;"
-							!important " role=" alert">
-							<div class="px-3" style="padding-top: 10px; margin-bottom: 5px;">
-								<h4 class="alert-heading mt-3">Welcome to Autobids!</h4>
-								<p style="font-size: 17px;" class="mb-2">Please note your Autobids username is: <strong>
-										<%= user.username %>
-									</strong></p>
-								<p class="mb-2"><a href="#"
-										style="color: inherit;font-weight: 700;text-decoration: underline;">Click here
-										to watch complete demo video of Autobids</a></p>
-								<p class="mb-0">Your 5-days free trial subscription has started.</p>
-								<p class="mb-0"><strong>Click show more to view contact details.</strong></p>
-							</div>
-							<div class="mb-0 px-3 pb-3 " style="background: none; /* background: -moz-linear-gradient(180deg, #d2f4e8 0%, #0f6848 100%); */
-				/* background: -webkit-linear-gradient(180deg, #d2f4e8 0%, #0f6848 100%); */
-				/* background: linear-gradient(180deg, #d2f4e8 0%, #0f6848 100%); */ ">
-								<div>
-									<p class="mb-3">Use this free trial period to explore all the features of Autobids.
-									</p>
-									<p class="mb-0">Follow these three important steps for getting started and making
-										the most of your Autobids experience:</p>
-									<p class="mb-0 ml-3"><strong><a href="/skills"
-												style="color: inherit">1- Select project skills</a></strong> to stay
-										notified with newly posted projects on which you love to work.</p>
-									<p class="mb-0 ml-3"><strong><a href="/temp"
-												style="color: inherit">2- Write awesome proposals</a></strong> to take
-										full advantage of quick and auto bidding using Autobids.</p>
-									<p class="mb-3 ml-3"><strong><a href="/search"
-												style="color: inherit">3- Start Autobidding</a></strong> and let
-										Autobids place bid on newly posted projects within seconds.</p>
-									<p class="mb-0">For contact detail verification, queries or payment information,
-										please contact us at:</p>
-									<p class="mb-0 ml-3">• Whatsapp: <strong><a href=""
-												style="color: inherit; display: inline-block;">
-												<%= adminPhone %>
-											</a>, <a href=""
-												style="color: inherit; display: inline-block;"></a></strong>
-									</p>
-									<p class="mb-0 ml-3">• Email: <strong> <a href="mailto:<%= adminEmail %>"
-												style="color: inherit; display: inline-block;">
-												<%= adminEmail %>
-											</a></strong>
-									</p>
-									<p class="mb-0 ml-3">
-										• Skype:
-										<strong>
-											<%= adminSkype %>
-										</strong>
-									</p>
-									<p class="mb-3 ml-3">
-										• Telegram:
-										<strong>
-											<a style="color: inherit; display: inline-block;">
-												<%= adminTelegram %>
-											</a>
-										</strong>
-									</p>
-									<p class="mb-2"><a href="/guide"
-											style="color: inherit">Click here to read guide to help understand
-											Autobids</a></p>
-									<p class="mb-0">Happy bidding</p>
-								</div>
-								
-							</div>
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-								<span aria-hidden="true">×</span>
-							</button>
-						</div>
-					</div>
-				</div>
-				<div class="container-fluid">
-					<div class="p-3 mb-3 text-white rounded shadow-sm" style="  background: rgb(53,27,49);
-background: linear-gradient(90deg, rgba(53,27,49,1) 0%, rgba(102,29,58,1) 100%); color: white !important;">
-						<p class="mb-1">You currently have a limit of 50 bids. But don't worry, by verifying your
-							contact details, you can unlock 500 bids! 🚀</p>
-						<p class="mb-1">It's simple, just contact us at any of these:</p>
-						<div class="row">
-							<div class="col-xl-4 col-lg-6 col-md-8 order-md-0 order-lg-0">
-								<p class="mb-0 ml-3" style="font-size: 14px">• Whatsapp: <a
-										href="" style="color: inherit">
-										<%= adminPhone %>
-									</a>,
-									<a href="" style="color: inherit"></a>
-								</p>
-							</div>
-							<div class="col-xl-4 col-lg-6 col-md-8 order-md-2 order-lg-0">
-								<p class="mb-0 ml-3" style="font-size: 14px">• Email: <a href="mailto:<%= adminEmail %>"
-										style="color: inherit">
-										<%= adminEmail %>
-									</a></p>
-							</div>
-							<div class="col-xl-2 col-lg-6 col-md-4 order-md-1 order-lg-0">
-								<p class="mb-0 ml-3" style="font-size: 14px">• Telegram: <a href=""
-										style="color: inherit">
-										<%= adminTelegram %>
-									</a></p>
-							</div>
-							<div class="col-xl-2 col-lg-6 col-md-4 order-md-1 order-lg-0">
-								<p class="mb-0 ml-3" style="font-size: 14px">• Skype: <a href=""
-										style="color: inherit">
-										<%= adminSkype %>
-									</a></p>
-							</div>
-						</div>
-						<p class="mt-1 mb-0">Bonus: Get FREE AI bids when you contact us! 🎉</p>
-					</div>
-				</div>
+                                    <div class="form-group" style="display: none">
+                                        <label class="d-block mb-2 text-white">Bid delay (in seconds)</label>
+                                        <input type="number" class="form-control" id="input-autobid_delay" min="0" max="120" step="1" name="autobid_delay" value="60" required style="width: 220px">
+                                        <label class="d-block mt-1 mb-0 text-white opacity-75" style="font-size: 14px;">60 seconds recommended</label>
+                                    </div>
 
-				<div class="container-fluid">
+                                    <div class="form-group" style="display: none">
+                                        <label class="d-block mb-2 text-white">Time interval</label>
+                                        <select class="form-control" id="input-autobid_time" name="autobid_time" required style="width: 220px">
+                                            <option value="1" selected>Every 1 minute</option>
+                                            <option value="2">Every 2 minute</option>
+                                            <option value="3">Every 3 minute</option>
+                                            <option value="4">Every 4 minute</option>
+                                            <option value="5">Every 5 minute</option>
+                                            <option value="6">Every 6 minute</option>
+                                            <option value="7">Every 7 minute</option>
+                                            <option value="8">Every 8 minute</option>
+                                            <option value="9">Every 9 minute</option>
+                                        </select>
+                                    </div>
 
-					<form method="POST" action="autobid.php">
-						<div class="card shadow mb-4 bg-ai-blue"
-							style="background-color: #229ba1;background-image: linear-gradient(180deg,#09797ed9 10%,#01393ed9 100%), url(https://cdn.bidman.co/images/ai_bg.png);">
-							<div class="card-body">
+                                    <div class="form-group" style="display: none">
+                                        <label class="d-block mb-2 text-white">Time limit</label>
+                                        <select class="form-control" id="input-autobid_time_limit" name="autobid_time_limit" required style="width: 220px">
+                                            <option value="0" selected>No time limit</option>
+                                            <option value="1">Turn off after 1 hour</option>
+                                            <option value="2">Turn off after 2 hours</option>
+                                            <option value="3">Turn off after 3 hours</option>
+                                            <option value="4">Turn off after 4 hours</option>
+                                            <option value="5">Turn off after 5 hours</option>
+                                            <option value="6">Turn off after 6 hours</option>
+                                            <option value="7">Turn off after 7 hours</option>
+                                            <option value="8">Turn off after 8 hours</option>
+                                            <option value="9">Turn off after 9 hours</option>
+                                            <option value="10">Turn off after 10 hours</option>
+                                            <option value="11">Turn off after 11 hours</option>
+                                            <option value="12">Turn off after 12 hours</option>
+                                            <option value="13">Turn off after 13 hours</option>
+                                            <option value="14">Turn off after 14 hours</option>
+                                            <option value="15">Turn off after 15 hours</option>
+                                            <option value="16">Turn off after 16 hours</option>
+                                            <option value="17">Turn off after 17 hours</option>
+                                            <option value="18">Turn off after 18 hours</option>
+                                            <option value="19">Turn off after 19 hours</option>
+                                            <option value="20">Turn off after 20 hours</option>
+                                            <option value="21">Turn off after 21 hours</option>
+                                            <option value="22">Turn off after 22 hours</option>
+                                            <option value="23">Turn off after 23 hours</option>
+                                        </select>
+                                    </div>
 
-								<h4 class="h4 mb-0 text-white">Autobidding</h4>
-								<label class="d-block mb-2 text-white">Configure your autobidding by setting time
-									interval, time limit and bids limit.</label>
-								<div class="d-flex flex-wrap">
-									<div class="form-group mr-3">
-										<label class="d-block mb-1 text-white">Status</label>
-										<input type="checkbox" name="autobid_status" id="input-autobid_status"
-											value="true" data-toggle="toggle" data-on="Enabled" data-onstyle="light"
-											data-off="Disabled" data-offstyle="light" data-height="38" data-width="120">
-									</div>
+                                    <div class="form-group" style="display: none">
+                                        <label class="d-block mb-2 text-white">Bids limit</label>
+                                        <select class="form-control" id="input-autobid_bids_limit" name="autobid_bids_limit" required style="width: 220px">
+                                            <option value="0" selected>No bids limit</option>
+                                            <option value="10">Turn off after 10 bids</option>
+                                            <option value="20">Turn off after 20 bids</option>
+                                            <option value="30">Turn off after 30 bids</option>
+                                            <option value="40">Turn off after 40 bids</option>
+                                            <option value="50">Turn off after 50 bids</option>
+                                            <option value="60">Turn off after 60 bids</option>
+                                            <option value="70">Turn off after 70 bids</option>
+                                            <option value="80">Turn off after 80 bids</option>
+                                            <option value="90">Turn off after 90 bids</option>
+                                            <option value="100">Turn off after 100 bids</option>
+                                            <option value="110">Turn off after 110 bids</option>
+                                            <option value="120">Turn off after 120 bids</option>
+                                            <option value="130">Turn off after 130 bids</option>
+                                            <option value="140">Turn off after 140 bids</option>
+                                            <option value="150">Turn off after 150 bids</option>
+                                            <option value="160">Turn off after 160 bids</option>
+                                            <option value="170">Turn off after 170 bids</option>
+                                            <option value="180">Turn off after 180 bids</option>
+                                            <option value="190">Turn off after 190 bids</option>
+                                            <option value="200">Turn off after 200 bids</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="div-summary" style="display: none">
+                                    <p class="mb-0 text-white"><strong>Autobid Summary:</strong></p>
+                                    <ul>
+                                        <li class="text-light summary-interval">Autobids will automatically place bid <b>1 bid after every 1 minute</b> with delay of <strong>60 seconds</strong>.</li>
+                                        <li class="text-light summary summary-new-time-bids" style="display: none">
+                                            Autobids will stop autobidding <b>after 4 hours or after placing 20 bids, whichever happen first</b>.
+                                        </li>
+                                    </ul>
 
-									<div class="form-group mr-3" style="display: none">
-										<label class="d-block mb-1 text-white">Bid delay (in seconds)</label>
-										<input type="number" class="form-control" id="input-autobid_delay" min="0"
-											max="120" step="1" name="autobid_delay" value="60" required
-											style="width: 220px">
-										<label class="d-block mt-1 mb-0 text-white" style="font-size: 14px;">60 seconds
-											recommended</label>
-									</div>
+                                    <p class="mb-0 text-white"><strong>Notice!</strong></p>
+                                    <ul>
+                                        <li class="text-light">Bids limit will only count those bids which are placed through autobidding.</li>
+                                        <li class="text-light">To reset your time or bids limit, reselect the same value from dropdown.</li>
+                                        <li class="text-light">To remove time or bids limit, select "No time limit" or "No bids limit" from respective dropdowns.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" name="submit" class="btn btn-light ms-auto d-flex align-items-center gap-2">
+                                    <i class="fas fa-check"></i>Submit
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 
-									<div class="form-group mr-3" style="display: none">
-										<label class="d-block mb-1 text-white">Time interval</label>
-										<select class="form-control" id="input-autobid_time" name="autobid_time"
-											required style="width: 220px">
-											<option value="1" selected>Every 1 minute</option>
-											<option value="2">Every 2 minute</option>
-											<option value="3">Every 3 minute</option>
-											<option value="4">Every 4 minute</option>
-											<option value="5">Every 5 minute</option>
-											<option value="6">Every 6 minute</option>
-											<option value="7">Every 7 minute</option>
-											<option value="8">Every 8 minute</option>
-											<option value="9">Every 9 minute</option>
-										</select>
-									</div>
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdn.bidman.co/app_assets/js/sb-admin-2.min.js"></script>
+    <script src="https://cdn.bidman.co/app_assets/vendor/bootstrap4-toggle/js/bootstrap4-toggle.min.js"></script>
 
-									<div class="form-group mr-3" style="display: none">
-										<label class="d-block mb-1 text-white">Time limit</label>
-										<select class="form-control" id="input-autobid_time_limit"
-											name="autobid_time_limit" required style="width: 220px">
-											<option value="0" selected>No time limit</option>
-											<option value="1">Turn off after 1 hour</option>
-											<option value="2">Turn off after 2 hours</option>
-											<option value="3">Turn off after 3 hours</option>
-											<option value="4">Turn off after 4 hours</option>
-											<option value="5">Turn off after 5 hours</option>
-											<option value="6">Turn off after 6 hours</option>
-											<option value="7">Turn off after 7 hours</option>
-											<option value="8">Turn off after 8 hours</option>
-											<option value="9">Turn off after 9 hours</option>
-											<option value="10">Turn off after 10 hours</option>
-											<option value="11">Turn off after 11 hours</option>
-											<option value="12">Turn off after 12 hours</option>
-											<option value="13">Turn off after 13 hours</option>
-											<option value="14">Turn off after 14 hours</option>
-											<option value="15">Turn off after 15 hours</option>
-											<option value="16">Turn off after 16 hours</option>
-											<option value="17">Turn off after 17 hours</option>
-											<option value="18">Turn off after 18 hours</option>
-											<option value="19">Turn off after 19 hours</option>
-											<option value="20">Turn off after 20 hours</option>
-											<option value="21">Turn off after 21 hours</option>
-											<option value="22">Turn off after 22 hours</option>
-											<option value="23">Turn off after 23 hours</option>
-										</select>
-									</div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const starsContainer = document.getElementById('stars-container');
+            const starsCount = 100;
 
-									<div class="form-group mr-3" style="display: none">
-										<label class="d-block mb-1 text-white">Bids limit</label>
-										<select class="form-control" id="input-autobid_bids_limit"
-											name="autobid_bids_limit" required style="width: 220px">
-											<option value="0" selected>No bids limit</option>
-											<option value="10">Turn off after 10 bids</option>
-											<option value="20">Turn off after 20 bids</option>
-											<option value="30">Turn off after 30 bids</option>
-											<option value="40">Turn off after 40 bids</option>
-											<option value="50">Turn off after 50 bids</option>
-											<option value="60">Turn off after 60 bids</option>
-											<option value="70">Turn off after 70 bids</option>
-											<option value="80">Turn off after 80 bids</option>
-											<option value="90">Turn off after 90 bids</option>
-											<option value="100">Turn off after 100 bids</option>
-											<option value="110">Turn off after 110 bids</option>
-											<option value="120">Turn off after 120 bids</option>
-											<option value="130">Turn off after 130 bids</option>
-											<option value="140">Turn off after 140 bids</option>
-											<option value="150">Turn off after 150 bids</option>
-											<option value="160">Turn off after 160 bids</option>
-											<option value="170">Turn off after 170 bids</option>
-											<option value="180">Turn off after 180 bids</option>
-											<option value="190">Turn off after 190 bids</option>
-											<option value="200">Turn off after 200 bids</option>
-										</select>
-									</div>
-								</div>
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
 
-								<div class="div-summary" style="display: none">
-									<p class="mb-0 text-white"><strong>Autobid Summary:</strong></p>
-									<ul>
-										<li class="text-light summary-interval">Autobids will automatically place bid
-											<b>1 bid after every 1 minute</b> with delay of <strong>60 seconds</strong>.
-										</li>
-										<li class="text-light summary summary-new-time-bids" style="display: none">
-											Autobids will stop autobidding <b>after 4 hours or after placing 20 bids,
-												whichever happen first</b>.</li>
-									</ul>
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                const size = Math.random() * 2 + 1;
+                const duration = Math.random() * 3 + 2;
+                const delay = Math.random() * 5;
 
-									<p class="mb-0 text-white"><strong>Notice!</strong></p>
-									<ul>
-										<li class="text-light">Bids limit will only count those bids which are placed
-											through autobidding.</li>
-										<li class="text-light">To reset your time or bids limit, reselect the same value
-											from dropdown.</li>
-										<li class="text-light">To remove time or bids limit, select "No time limit" or
-											"No bids limit" from respective dropdowns.</li>
-									</ul>
-								</div>
-							</div>
-							<div class="card-footer" style="background: transparent;">
-								<button type="submit" name="submit" class="btn btn-light ml-auto d-flex">Submit</button>
-							</div>
-						</div>
-					</form>
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.setProperty('--duration', `${duration}s`);
+                star.style.setProperty('--delay', `${delay}s`);
 
-				</div>
-			</div>
-		</div>
-	</div>
+                starsContainer.appendChild(star);
+            }
+        });
 
-	<script src="/assets/jquery.min.js"></script>
-	<script src="/assets/bootstrap.bundle.min.js"></script>
-	<script src="/assets/jquery.easing.min.js"></script>
-	<script src="/assets/sb-admin-2.min.js?v=6"></script>
-	<script src="/assets/bootstrap4-toggle.min.js"></script>
+        $(document).ready(function() {
+            var timeLimit = -1;
+            var bidLimit = -1;
 
-	<script type="text/javascript">
-		var timeLimit = -1;
-		var bidLimit = -1;
+            function renderSummary() {
+                $('.summary').hide();
 
-		function renderSummary() {
-			$('.summary').hide();
+                if (timeLimit > 0 || bidLimit > 0)
+                    $('.summary-new-time-bids').show();
 
-			if (timeLimit > 0 || bidLimit > 0)
-				$('.summary-new-time-bids').show();
+                if (timeLimit == -1 && bidLimit == -1)
+                    $('.summary-current-time-bids').show();
+                else if (timeLimit == -1)
+                    $('.summary-current-time').show();
+                else if (bidLimit == -1)
+                    $('.summary-current-bids').show();
 
-			if (timeLimit == -1 && bidLimit == -1)
-				$('.summary-current-time-bids').show();
-			else if (timeLimit == -1)
-				$('.summary-current-time').show();
-			else if (bidLimit == -1)
-				$('.summary-current-bids').show();
+                if (timeLimit > 0 && bidLimit > 0)
+                    $('.summary-new-time-bids b').html('after ' + timeLimit + ' hours or after placing ' + bidLimit + ' bids, whichever happen first');
+                else if (timeLimit > 0)
+                    $('.summary-new-time-bids b').html('after ' + timeLimit + ' hours');
+                else if (bidLimit > 0)
+                    $('.summary-new-time-bids b').html('after placing ' + bidLimit + ' bids');
+            }
 
-			if (timeLimit > 0 && bidLimit > 0)
-				$('.summary-new-time-bids b').html('after ' + timeLimit + ' hours or after placing ' + bidLimit + ' bids, whichever happen first');
-			else if (timeLimit > 0)
-				$('.summary-new-time-bids b').html('after ' + timeLimit + ' hours');
-			else if (bidLimit > 0)
-				$('.summary-new-time-bids b').html('after placing ' + bidLimit + ' bids');
-		}
+            $('#input-autobid_delay').change(function() {
+                $('.summary-interval strong').html($(this).val() + ' seconds');
+            });
 
-		$(document).ready(function () {
-			$('#input-autobid_delay').change(function () {
-				$('.summary-interval strong').html($(this).val() + ' seconds');
-			});
+            $('#input-autobid_time').change(function() {
+                val = $(this).find(':selected').val();
+                $('.summary-interval b').html('1 bid after every ' + val + ' minute');
+            });
 
-			$('#input-autobid_time').change(function () {
-				val = $(this).find(':selected').val();
-				$('.summary-interval b').html('1 bid after every ' + val + ' minute');
-			});
+            $('#input-autobid_time_limit').change(function() {
+                timeLimit = parseInt($(this).find(':selected').val());
 
-			$('#input-autobid_time_limit').change(function () {
-				timeLimit = parseInt($(this).find(':selected').val());
+                renderSummary();
+            });
 
-				renderSummary();
-			});
+            $('#input-autobid_bids_limit').change(function() {
+                bidLimit = parseInt($(this).find(':selected').val());
 
-			$('#input-autobid_bids_limit').change(function () {
-				bidLimit = parseInt($(this).find(':selected').val());
+                renderSummary();
+            });
 
-				renderSummary();
-			});
-
-			$('#input-autobid_status').change(function () {
-				if ($(this).prop('checked')) {
-					$(this).parents('.form-group').siblings('.form-group').fadeIn(200);
-					$('.div-summary').fadeIn(200);
-				}
-				else {
-					$(this).parents('.form-group').siblings('.form-group').fadeOut(200);
-					$('.div-summary').fadeOut(200);
-				}
-			});
-		});
-	</script>
+            $('#input-autobid_status').change(function() {
+                if ($(this).prop('checked')) {
+                    $(this).parents('.form-group').siblings('.form-group').fadeIn(200);
+                    $('.div-summary').fadeIn(200);
+                } else {
+                    $(this).parents('.form-group').siblings('.form-group').fadeOut(200);
+                    $('.div-summary').fadeOut(200);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

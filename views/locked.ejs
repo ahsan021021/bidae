@@ -3,79 +3,228 @@
 
 <head>
     <meta charset="utf-8" />
-    <title>Login | AutoBids - Automate freelancer bidding with chatgpt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta content="Tailwind CSS AI Startup & Technology Saas & AI Software Landing Page Template, ai agency, ai application, ai business, ai, creative ai art, ai it solutions, modern web ai, multipurpose, saas, nft art, nft software, tailwind css." name="description" />
-    <meta content="coderthemes" name="author" />
-
-    <!-- App favicon -->
-    <link rel="shortcut icon" href="/assets/images/favicon.ico">
-
-    <!-- style css -->
-    <link href="/assets/css/style.min.css" rel="stylesheet" type="text/css">
-    <link href="/assets/css/bmain.css" rel="stylesheet" type="text/css">
+    <title>You Are Blocked | AutoBids</title>
     
-    <!-- Icons css -->
-    <link href="/assets/css/icons.css" rel="stylesheet" type="text/css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" type="text/css">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --secondary: #60a5fa;
+            --dark-blue: #0f172a;
+            --medium-blue: #1e293b;
+            --light-blue: #334155;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --text-light: rgba(255, 255, 255, 0.9);
+            --text-lighter: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(59, 130, 246, 0.2);
+            --card-bg: rgba(30, 41, 59, 0.7);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-blue);
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Background */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: twinkle var(--duration) infinite ease-in-out;
+            animation-delay: var(--delay);
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        
+        /* Animated Gradient Background */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(125deg, var(--dark-blue), var(--medium-blue), var(--light-blue), var(--medium-blue), var(--dark-blue));
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+        
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Glowing Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: -1;
+        }
+        
+        .orb-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--accent-purple), var(--primary));
+            top: -100px;
+            right: -100px;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--accent-pink), var(--primary));
+            bottom: -200px;
+            left: -200px;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+        
+        .orb-3 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--secondary), var(--primary));
+            top: 50%;
+            right: 10%;
+            animation: float 12s ease-in-out infinite 2s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-20px, -30px); }
+        }
+        
+        /* Card Styles */
+        .card {
+            background-color: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-top: 1px solid var(--border-color);
+            padding: 15px 0;
+        }
+    </style>
 </head>
 
-<body class="bg-slate-900 relative h-full">
-    <div>
-        <div class="fixed top-0 -z-10">
-            <div class="blur-[200px] w-[500px] h-[500px] rounded-full bg-gradient-to-tl from-red-600/40 to-pink-600/40"></div>
-        </div>
-        <div class="fixed top-0 end-0 -z-10">
-            <div class="blur-[200px] w-[500px] h-[500px] rounded-full bg-gradient-to-tl from-red-600/40 to-pink-600/40"></div>
-        </div>
-        <div class="fixed inset-0 flex items-center justify-center -z-10">
-            <div class="blur-[200px] w-[500px] h-[500px] rounded-full bg-gradient-to-tl from-red-600/40 to-pink-600/40"></div>
-        </div>
-        <div class="fixed bottom-0 start-0 -z-10">
-            <div class="blur-[200px] w-[500px] h-[500px] rounded-full bg-gradient-to-tl from-red-600/40 to-pink-600/40"></div>
-        </div>
-        <div class="fixed bottom-0 end-0 -z-10">
-            <div class="blur-[200px] w-[500px] h-[500px] rounded-full bg-gradient-to-tl from-red-600/40 to-pink-600/40"></div>
-        </div>
-    </div><!-- end body bg gradient -->
+<body>
+    <!-- Background Elements -->
+    <div class="gradient-bg"></div>
+    <div class="stars-container" id="stars-container"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
 
-    <section class="flex items-center py-6 px-0 lg:p-10 w-full lg:h-screen">
+    <section class="d-flex align-items-center justify-content-center min-vh-100 py-6 px-3">
         <div class="container">
-            <div class="backdrop-blur-2xl bg-default-950/40 rounded-2xl overflow-hidden max-w-xl mx-auto">
-                <div class="grid lg:grid-cols-1 gap-10">
+            <div class="card mx-auto" style="max-width: 600px;">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                        <h3 class="text-3xl font-medium text-white mb-3">You Are Blocked</h3>
+                        <div class="w-16 h-1 bg-primary mx-auto rounded"></div>
+                    </div>
                     
-                    <div class="flex flex-col h-full p-10">
-                        <div class="pb-10">
-                            <a href="/" class="flex">
-                                <h3 class="text-3xl font-medium capitalize text-white ">You Are Blocked</h3>
-                            </a>
-                        </div>
-                        <div class="pb6 my-auto">
-                            <h4 class="text-2xl font-bold text-white mb-4">Contact Us</h4>
-                            <p class="text-default-300 mb-8 max-w-sm "><%= adminPhone %></p>
-                            <br>
-                            <p class="text-default-300 mb-8 max-w-sm "><%= adminEmail %></p>
-                            
-                        </div>
-                        <div>
-                           
-                        </div>
-                    </div> <!-- end col -->
-                </div> <!-- end grid -->
-            </div> <!-- end bg -->
-            
-        </div><!-- end container -->
-    </section><!-- end section -->
+                    <div class="text-center my-5">
+                        <h4 class="text-xl font-bold text-white mb-4">Contact Us</h4>
+                        <p class="text-light mb-2"><%= adminPhone %></p>
+                        <p class="text-light mb-4"><%= adminEmail %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- footer start -->
-    <footer class="2xl:fixed bottom-0 start-0 end-0 py-3">
+    <!-- Footer -->
+    <footer class="py-3 fixed-bottom">
         <div class="container">
-            <p class="text-base font-medium text-center text-default-200">
-                <script>document.write(new Date().getFullYear())</script>
-                © AutoBids </a>
+            <p class="text-base font-medium text-center text-light mb-0">
+                <script>document.write(new Date().getFullYear())</script> © AutoBids
             </p>
         </div>
     </footer>
-    <!-- footer end -->
-</body>
 
+    <!-- JavaScript to create stars -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const starsContainer = document.getElementById('stars-container');
+            const starsCount = 100;
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Random position
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                
+                // Random size
+                const size = Math.random() * 2;
+                
+                // Random duration and delay for twinkling
+                const duration = 2 + Math.random() * 3;
+                const delay = Math.random() * 5;
+                
+                star.style.left = `${posX}%`;
+                star.style.top = `${posY}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.setProperty('--duration', `${duration}s`);
+                star.style.setProperty('--delay', `${delay}s`);
+                
+                starsContainer.appendChild(star);
+            }
+        });
+    </script>
+</body>
 </html>

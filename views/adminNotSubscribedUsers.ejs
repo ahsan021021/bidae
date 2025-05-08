@@ -8,63 +8,448 @@
 
     <title>Not-Subscribed Users | AutoBids</title>
 
-    <link href="https://cdn.bidman.co/app_assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.bidman.co/app_assets/css/sb-admin-2.min.css?v=11" rel="stylesheet">
-    <link href="https://cdn.bidman.co/app_assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <style type="text/css">
-        label {
-            font-size: 14px;
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" type="text/css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- DataTables CSS -->
+    <link href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --secondary: #60a5fa;
+            --dark-blue: #040d21;
+            --medium-blue: #0a1930;
+            --light-blue: #0f2b4a;
+            --text-light: rgba(255, 255, 255, 0.8);
+            --text-lighter: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(59, 130, 246, 0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-blue);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Background */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: twinkle var(--duration) infinite ease-in-out;
+            animation-delay: var(--delay);
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        
+        /* Animated Gradient Background */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(125deg, var(--dark-blue), var(--medium-blue), var(--light-blue), var(--medium-blue), var(--dark-blue));
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+        
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Glowing Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.2;
+            z-index: -1;
+        }
+        
+        .orb-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #4f46e5, #3b82f6);
+            top: -100px;
+            right: -100px;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #0ea5e9, #2563eb);
+            bottom: -200px;
+            left: -200px;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+        
+        .orb-3 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #6366f1, #4f46e5);
+            top: 50%;
+            right: 10%;
+            animation: float 12s ease-in-out infinite 2s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-20px, -30px); }
+        }
+        
+        /* Navbar */
+        .navbar {
+            background-color: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 24px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-right: 40px;
+        }
+        
+        .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            padding: 8px 16px !important;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            margin: 0 5px;
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #fff !important;
+        }
+        
+        .nav-link.active {
+            background-color: rgba(59, 130, 246, 0.2);
+            color: var(--secondary) !important;
+        }
+        
+        /* Card Styles */
+        .card {
+            background-color: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        
+        .card-header {
+            background-color: rgba(15, 23, 42, 0.6);
+            border-bottom: 1px solid var(--border-color);
+            border-radius: 16px 16px 0 0 !important;
+            padding: 20px;
+        }
+        
+        .card-body {
+            padding: 24px;
+        }
+        
+        /* Table Styles */
+        .table {
+            color: var(--text-light);
+            border-color: var(--border-color);
+        }
+        
+        .table th {
+            background-color: rgba(15, 23, 42, 0.6);
+            color: #fff;
             font-weight: 600;
-            margin-bottom: 3px;
-            color: #555;
+            border-color: var(--border-color);
+            padding: 12px 16px;
+        }
+        
+        .table td {
+            border-color: var(--border-color);
+            padding: 12px 16px;
+            vertical-align: middle;
+        }
+        
+        .table tbody tr {
+            transition: all 0.3s ease;
+        }
+        
+        .table tbody tr:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+        
+        /* DataTables Custom Styling */
+        .dataTables_wrapper .dataTables_length,
+        .dataTables_wrapper .dataTables_filter,
+        .dataTables_wrapper .dataTables_info,
+        .dataTables_wrapper .dataTables_processing,
+        .dataTables_wrapper .dataTables_paginate {
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+        
+        .dataTables_wrapper .dataTables_length select,
+        .dataTables_wrapper .dataTables_filter input {
+            background-color: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: #fff;
+            padding: 8px 12px;
+            margin-left: 8px;
+        }
+        
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color) !important;
+            border-radius: 8px;
+            color: var(--text-light) !important;
+            margin: 0 4px;
+            padding: 8px 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+            background: rgba(59, 130, 246, 0.2) !important;
+            color: #fff !important;
+            border-color: var(--primary) !important;
+        }
+        
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+            background: var(--primary) !important;
+            color: #fff !important;
+            border-color: var(--primary) !important;
+        }
+        
+        /* Loading Spinner */
+        #loadingSpinner {
+            background-color: rgba(15, 23, 42, 0.8);
+            border-radius: 16px;
+            padding: 20px;
+            color: var(--text-light);
+        }
+        
+        .spinner-border {
+            width: 3rem;
+            height: 3rem;
+            border-width: 0.25rem;
+            margin-bottom: 10px;
+        }
+        
+        /* Page Title */
+        .page-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 0;
+            background: linear-gradient(to right, #fff, var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* Stats Cards */
+        .stats-row {
+            margin-bottom: 20px;
+        }
+        
+        .stat-card {
+            background: rgba(15, 23, 42, 0.4);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+        
+        .stat-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+        
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-lighter);
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .navbar-nav {
+                margin-top: 15px;
+            }
+            
+            .nav-link {
+                padding: 10px !important;
+            }
+            
+            .dataTables_wrapper .dataTables_length,
+            .dataTables_wrapper .dataTables_filter {
+                text-align: left;
+                margin-bottom: 15px;
+            }
+            
+            .stats-row {
+                margin-bottom: 0;
+            }
+            
+            .stat-card {
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
 
 <body id="page-top" class="sidebar-toggled">
+    <!-- Animated Background -->
+    <div class="gradient-bg"></div>
+    <div class="stars-container" id="stars"></div>
+    
+    <!-- Glowing Orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    
     <div id="wrapper">
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                    <a class="navbar-brand position-relative" href="/admin/dashboard">
-                        <h2>AUTOBIDS</h2>
-                    </a>
-                    <ul class="navbar-nav">
-						<li class="nav-item">
-							<a class="nav-link text-dark" style="font-size: 15px;" href="/admin/blockUsers"
-								role="button">
-								<span class="d-none d-sm-block">&nbsp;</span>
-								<span style="font-weight: bold; font-size: 16px; color: #18557F;">BlockUsers</span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" style="font-size: 15px;" href="/admin/bidsAllowed"
-								role="button">
-								<span class="d-none d-sm-block">&nbsp;</span>
-								<span style="font-weight: bold; font-size: 16px; color: #18557F;">BidsAllowed</span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" style="font-size: 15px;" href="/admin/editSubscription"
-								role="button">
-								<span class="d-none d-sm-block">&nbsp;</span>
-								<span style="font-weight: bold; font-size: 16px; color: #18557F;">Subscription Type</span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" style="font-size: 15px;" href="/admin/editDates"
-								role="button">
-								<span class="d-none d-sm-block">&nbsp;</span>
-								<span style="font-weight: bold; font-size: 16px; color: #18557F;">Subscription Date</span>
-							</a>
-						</li>
-					</ul>
+                <nav class="navbar navbar-expand navbar-dark">
+                    <div class="container-fluid">
+                        <a class="navbar-brand animate__animated animate__fadeIn" href="/admin/dashboard">AUTOBIDS</a>
+                        
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        
+                        <div class="collapse navbar-collapse" id="navbarContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/admin/blockUsers">
+                                        <i class="fas fa-user-lock me-2"></i>Block Users
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/admin/bidsAllowed">
+                                        <i class="fas fa-gavel me-2"></i>Bids Allowed
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/admin/editSubscription">
+                                        <i class="fas fa-tag me-2"></i>Subscription Type
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/admin/editDates">
+                                        <i class="fas fa-calendar-alt me-2"></i>Subscription Date
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                 </nav>
 
-                <div class="container-fluid">
-                    <div class="card shadow">
+                <div class="container-fluid py-4">
+                    <div class="row stats-row animate__animated animate__fadeInUp">
+                        <div class="col-xl-3 col-md-6">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="stat-value" id="totalUsers">0</div>
+                                <div class="stat-label">Total Non-Subscribed Users</div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </div>
+                                <div class="stat-value" id="newUsers">0</div>
+                                <div class="stat-label">New This Month</div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-venus-mars"></i>
+                                </div>
+                                <div class="stat-value" id="maleUsers">0</div>
+                                <div class="stat-label">Male Users</div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-md-6">
+                            <div class="stat-card">
+                                <div class="stat-icon">
+                                    <i class="fas fa-venus"></i>
+                                </div>
+                                <div class="stat-value" id="femaleUsers">0</div>
+                                <div class="stat-label">Female Users</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card shadow animate__animated animate__fadeInUp animate__delay-1s">
                         <div class="card-header py-3 d-flex align-items-center">
-                            <h5 class="h5 m-0 text-primary">Total Users</h5>
+                            <h5 class="page-title">Non-Subscribed Users</h5>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -82,42 +467,32 @@
                                     <tbody>
                                         <% users.forEach((user, index)=> { %>
                                             <tr>
-                                                <td>
-                                                    <%= index + 1 %>
-                                                </td>
-                                                <td>
-                                                    <%= user.username %>
-                                                </td>
-                                                <td>
-                                                    <%= user.age %>
-                                                </td>
-                                                <td>
-                                                    <%= user.gender %>
-                                                </td>
-                                                <td>
-                                                    <%= user.email %>
-                                                </td>
-                                                <td>
-                                                    <%= user.phone %>
-                                                </td>
+                                                <td><%= index + 1 %></td>
+                                                <td><%= user.username %></td>
+                                                <td><%= user.age %></td>
+                                                <td><%= user.gender %></td>
+                                                <td><%= user.email %></td>
+                                                <td><%= user.phone %></td>
                                             </tr>
-                                            <% }); %>
+                                        <% }); %>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
+                
                 <div id="loadingSpinner" style="display: none; text-align: center; margin-top: 20px;">
                     <div class="spinner-border text-primary" role="status">
-                        <span class="sr-only">Loading...</span>
+                        <span class="visually-hidden">Loading...</span>
                     </div>
-                    <span>Loading...</span>
+                    <p class="mt-2">Loading...</p>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Scripts -->
     <script src="/assets/jquery.min.js"></script>
     <script src="/assets/bootstrap.bundle.min.js"></script>
     <script src="/assets/jquery.easing.min.js"></script>
@@ -126,13 +501,50 @@
     <script src="/assets/dataTables.bootstrap4.min.js"></script>
 
     <script>
+        // Create stars for background
+        document.addEventListener('DOMContentLoaded', function() {
+            const starsContainer = document.getElementById('stars');
+            const starsCount = 100;
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Random position
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                
+                // Random size
+                const size = Math.random() * 2 + 1;
+                
+                // Random animation duration and delay
+                const duration = Math.random() * 3 + 2;
+                const delay = Math.random() * 5;
+                
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.setProperty('--duration', `${duration}s`);
+                star.style.setProperty('--delay', `${delay}s`);
+                
+                starsContainer.appendChild(star);
+            }
+        });
+
         $(document).ready(function () {
             // Initialize DataTable with options
             var dataTable = $('#dataTable').DataTable({
                 "paging": true, // Enable pagination
                 "searching": true, // Enable search
                 "ordering": true, // Enable sorting
-                "info": true // Show information
+                "info": true, // Show information
+                "responsive": true, // Make table responsive
+                "language": {
+                    "search": "Search users:",
+                    "lengthMenu": "Show _MENU_ users per page",
+                    "info": "Showing _START_ to _END_ of _TOTAL_ non-subscribed users"
+                }
             });
 
             // Show loading spinner when search is initiated
@@ -144,6 +556,40 @@
             $('#dataTable').on('draw.dt', function () {
                 $('#loadingSpinner').hide();
             });
+            
+            // Calculate and update stats
+            function updateStats() {
+                const users = Array.from(document.querySelectorAll('#dataTable tbody tr'));
+                const totalUsers = users.length;
+                const maleUsers = users.filter(user => user.children[3].textContent.trim().toLowerCase() === 'male').length;
+                const femaleUsers = users.filter(user => user.children[3].textContent.trim().toLowerCase() === 'female').length;
+                
+                // Animate counting up
+                animateCount('totalUsers', 0, totalUsers, 1500);
+                animateCount('newUsers', 0, Math.floor(totalUsers * 0.15), 1500); // Assuming 15% are new
+                animateCount('maleUsers', 0, maleUsers, 1500);
+                animateCount('femaleUsers', 0, femaleUsers, 1500);
+            }
+            
+            // Animate counting
+            function animateCount(elementId, start, end, duration) {
+                const element = document.getElementById(elementId);
+                const range = end - start;
+                const increment = end > start ? 1 : -1;
+                const stepTime = Math.abs(Math.floor(duration / range));
+                let current = start;
+                
+                const timer = setInterval(function() {
+                    current += increment;
+                    element.textContent = current;
+                    if (current == end) {
+                        clearInterval(timer);
+                    }
+                }, stepTime);
+            }
+            
+            // Call updateStats after a short delay
+            setTimeout(updateStats, 500);
         });
     </script>
 </body>

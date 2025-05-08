@@ -2,288 +2,561 @@
 <html lang="en">
 
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>Dashboard | AutoBids</title>
+    <title>Dashboard | AutoBids</title>
 
-	<meta property="og:url" content="https://AutoBids.co/" />
-	<meta property="og:type" content="website" />
-	<meta property="og:title" content="AutoBids" />
-	<meta property="og:description" content="AutoBids is a tool which gives you upper hand to other freelancers" />
-	<meta property="og:image" content="https://cdn.bidman.co/images/logo.png" />
+    <meta property="og:url" content="https://AutoBids.co/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="AutoBids" />
+    <meta property="og:description" content="AutoBids is a tool which gives you upper hand to other freelancers" />
+    <meta property="og:image" content="https://cdn.bidman.co/images/logo.png" />
 
-	<!-- <link rel="icon" href="https://cdn.bidman.co/images/favicon/favicon-32x32.png" sizes="32x32">
-	<link rel="icon" href="https://cdn.bidman.co/images/favicon/favicon-57x57.png" sizes="57x57">
-	<link rel="icon" href="https://cdn.bidman.co/images/favicon/favicon-76x76.png" sizes="76x76">
-	<link rel="icon" href="https://cdn.bidman.co/images/favicon/favicon-96x96.png" sizes="96x96">
-	<link rel="icon" href="https://cdn.bidman.co/images/favicon/favicon-128x128.png" sizes="128x128">
-	<link rel="icon" href="https://cdn.bidman.co/images/favicon/favicon-192x192.png" sizes="192x192">
-	<link rel="icon" href="https://cdn.bidman.co/images/favicon/favicon-228x228.png" sizes="228x228">
-	<link rel="shortcut icon" sizes="196x196" href="https://cdn.bidman.co/images/favicon/favicon-196x196.png"> -->
-	<link rel="apple-touch-icon" href="https://cdn.bidman.co/images/favicon/favicon-120x120.png" sizes="120x120">
-	<link rel="apple-touch-icon" href="https://cdn.bidman.co/images/favicon/favicon-152x152.png" sizes="152x152">
-	<link rel="apple-touch-icon" href="https://cdn.bidman.co/images/favicon/favicon-180x180.png" sizes="180x180">
-	<meta name="theme-color" content="#012B46">
-	<meta name="msapplication-TileColor" content="#FFFFFF">
-	<meta name="msapplication-TileImage" content="https://cdn.bidman.co/images/favicon/favicon-144x144.png">
+    <link rel="apple-touch-icon" href="https://cdn.bidman.co/images/favicon/favicon-120x120.png" sizes="120x120">
+    <link rel="apple-touch-icon" href="https://cdn.bidman.co/images/favicon/favicon-152x152.png" sizes="152x152">
+    <link rel="apple-touch-icon" href="https://cdn.bidman.co/images/favicon/favicon-180x180.png" sizes="180x180">
+    <meta name="theme-color" content="#012B46">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
+    <meta name="msapplication-TileImage" content="https://cdn.bidman.co/images/favicon/favicon-144x144.png">
 
-	<link href="https://cdn.bidman.co/app_assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
-		type="text/css">
-	<link
-		href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-		rel="stylesheet">
-	<link href="https://cdn.bidman.co/app_assets/css/sb-admin-2.min.css?v=11" rel="stylesheet">
-	<link href="https://cdn.bidman.co/app_assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-	<style type="text/css">
-		label {
-			font-size: 14px;
-			font-weight: 600;
-			margin-bottom: 3px;
-			color: #555;
-		}
-	</style>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" type="text/css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --secondary: #60a5fa;
+            --dark-blue: #040d21;
+            --medium-blue: #0a1930;
+            --light-blue: #0f2b4a;
+            --text-light: rgba(255, 255, 255, 0.8);
+            --text-lighter: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(59, 130, 246, 0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark-blue);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Background */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: twinkle var(--duration) infinite ease-in-out;
+            animation-delay: var(--delay);
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        
+        /* Animated Gradient Background */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(125deg, var(--dark-blue), var(--medium-blue), var(--light-blue), var(--medium-blue), var(--dark-blue));
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+        
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Glowing Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.2;
+            z-index: -1;
+        }
+        
+        .orb-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #4f46e5, #3b82f6);
+            top: -100px;
+            right: -100px;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #0ea5e9, #2563eb);
+            bottom: -200px;
+            left: -200px;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+        
+        .orb-3 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #6366f1, #4f46e5);
+            top: 50%;
+            right: 10%;
+            animation: float 12s ease-in-out infinite 2s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-20px, -30px); }
+        }
+        
+        /* Navbar */
+        .navbar {
+            background-color: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 24px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-right: 40px;
+        }
+        
+        .nav-link {
+            color: var(--text-light) !important;
+            font-weight: 500;
+            padding: 8px 16px !important;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            margin: 0 5px;
+        }
+        
+        .nav-link:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #fff !important;
+        }
+        
+        .nav-link.active {
+            background-color: rgba(59, 130, 246, 0.2);
+            color: var(--secondary) !important;
+        }
+        
+        .dropdown-menu {
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 12px;
+            min-width: 220px;
+        }
+        
+        .dropdown-item {
+            color: var(--text-light);
+            padding: 10px 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .dropdown-item:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #fff;
+        }
+        
+        .dropdown-item i {
+            color: var(--secondary);
+            width: 20px;
+            text-align: center;
+            margin-right: 10px;
+        }
+        
+        .img-profile {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+        
+        .img-profile:hover {
+            border-color: var(--secondary);
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 30px 0;
+        }
+        
+        .dashboard-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .dashboard-title {
+            font-size: 28px;
+            font-weight: 700;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 30px;
+        }
+        
+        .stats-card {
+            background-color: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .stats-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .stats-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--secondary);
+            margin-bottom: 16px;
+        }
+        
+        .stats-value {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        
+        .stats-label {
+            color: var(--text-lighter);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .stats-button {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .stats-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+        
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+        
+        .delay-5 {
+            animation-delay: 0.5s;
+        }
+        
+        .delay-6 {
+            animation-delay: 0.6s;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .navbar-nav {
+                margin-top: 15px;
+            }
+            
+            .nav-link {
+                padding: 10px !important;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
-<body id="page-top" class="sidebar-toggled">
-	<div id="wrapper">
+<body>
+    <!-- Animated Background -->
+    <div class="gradient-bg"></div>
+    <div class="stars-container" id="stars"></div>
+    
+    <!-- Glowing Orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">AUTOBIDS</a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/blockUsers">Block Users</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/bidsAllowed">Bids Allowed</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/editSubscription">Subscription Type</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/editDates">Subscription Date</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center">
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="d-none d-sm-block me-2 text-end">
+                                <p class="m-0 text-white"><%= user.username %></p>
+                            </div>
+                            <img class="img-profile rounded-circle" src="<%= user.profilePicture ? user.profilePicture : 'https://cdn3.f-cdn.com/ppic/245304646/logo/75311776/profile_logo_75311776.jpg' %>">
+                        </a>
+                        
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li>
+                                <a class="dropdown-item" href="/admin/changeInfo">
+                                    <i class="fas fa-user-edit"></i>
+                                    Change Information
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/admin/changePricing">
+                                    <i class="fas fa-dollar-sign"></i>
+                                    Change Pricing
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/admin/passChange">
+                                    <i class="fas fa-key"></i>
+                                    Change Password
+                                </a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <a class="dropdown-item" href="/admin/logout">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="main-content">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1 class="dashboard-title">Admin Dashboard</h1>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stats-card animate-fadeIn delay-1">
+                    <h3 class="stats-title">Total Users</h3>
+                    <div class="stats-value"><%= userlength %></div>
+                    <div class="stats-label">Registered users</div>
+                    <a href="/admin/totalUsers" class="stats-button">
+                        <i class="fas fa-eye me-2"></i> View Details
+                    </a>
+                </div>
+                
+                <div class="stats-card animate-fadeIn delay-2">
+                    <h3 class="stats-title">Users On Trial Period</h3>
+                    <div class="stats-value"><%= userOnTrialLength %></div>
+                    <div class="stats-label">Trial users</div>
+                    <a href="/admin/trialUsers" class="stats-button">
+                        <i class="fas fa-eye me-2"></i> View Details
+                    </a>
+                </div>
+                
+                <div class="stats-card animate-fadeIn delay-3">
+                    <h3 class="stats-title">Users On Monthly Subscription</h3>
+                    <div class="stats-value"><%= userOnMonthlyLength %></div>
+                    <div class="stats-label">Monthly subscribers</div>
+                    <a href="/admin/monthlyUsers" class="stats-button">
+                        <i class="fas fa-eye me-2"></i> View Details
+                    </a>
+                </div>
+                
+                <div class="stats-card animate-fadeIn delay-4">
+                    <h3 class="stats-title">Users On Semi-Annual Subscription</h3>
+                    <div class="stats-value"><%= userOnSemiAnnualLength %></div>
+                    <div class="stats-label">Semi-annual subscribers</div>
+                    <a href="/admin/semiAnnualUsers" class="stats-button">
+                        <i class="fas fa-eye me-2"></i> View Details
+                    </a>
+                </div>
+                
+                <div class="stats-card animate-fadeIn delay-5">
+                    <h3 class="stats-title">Users On Annual Subscription</h3>
+                    <div class="stats-value"><%= userOnAnnualLength %></div>
+                    <div class="stats-label">Annual subscribers</div>
+                    <a href="/admin/annualUsers" class="stats-button">
+                        <i class="fas fa-eye me-2"></i> View Details
+                    </a>
+                </div>
+                
+                <div class="stats-card animate-fadeIn delay-6">
+                    <h3 class="stats-title">Users Not-Subscribed</h3>
+                    <div class="stats-value"><%= userOnNotSubscribedLength %></div>
+                    <div class="stats-label">Non-subscribed users</div>
+                    <a href="/admin/notSubscribedUsers" class="stats-button">
+                        <i class="fas fa-eye me-2"></i> View Details
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script>
+        // Create stars for background
+        document.addEventListener('DOMContentLoaded', function() {
+            const starsContainer = document.getElementById('stars');
+            const starsCount = 100;
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Random position
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                
+                // Random size
+                const size = Math.random() * 2 + 1;
+                
+                // Random animation duration and delay
+                const duration = Math.random() * 3 + 2;
+                const delay = Math.random() * 5;
+                
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.setProperty('--duration', `${duration}s`);
+                star.style.setProperty('--delay', `${delay}s`);
+                
+                starsContainer.appendChild(star);
+            }
+            
+            // Check if the success parameter is present in the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const success = urlParams.get('success');
 
-		<div id="content-wrapper" class="d-flex flex-column">
-			<div id="content">
-
-
-				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-					<a class="navbar-brand position-relative" href="#">
-						<h2>AUTOBIDS</h2>
-					</a>
-
-					<ul class="navbar-nav">
-						<li class="nav-item">
-							<a class="nav-link text-dark" style="font-size: 15px;" href="/admin/blockUsers"
-								role="button">
-								<span class="d-none d-sm-block">&nbsp;</span>
-								<span style="font-weight: bold; font-size: 16px; color: #18557F;">BlockUsers</span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" style="font-size: 15px;" href="/admin/bidsAllowed"
-								role="button">
-								<span class="d-none d-sm-block">&nbsp;</span>
-								<span style="font-weight: bold; font-size: 16px; color: #18557F;">BidsAllowed</span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" style="font-size: 15px;" href="/admin/editSubscription"
-								role="button">
-								<span class="d-none d-sm-block">&nbsp;</span>
-								<span style="font-weight: bold; font-size: 16px; color: #18557F;">Subscription
-									Type</span>
-							</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link text-dark" style="font-size: 15px;" href="/admin/editDates"
-								role="button">
-								<span class="d-none d-sm-block">&nbsp;</span>
-								<span style="font-weight: bold; font-size: 16px; color: #18557F;">Subscription
-									Date</span>
-							</a>
-						</li>
-					</ul>
-
-					<ul class="navbar-nav ml-auto">
-						<li class="nav-item dropdown no-arrow">
-							<a class="nav-link dropdown-toggle" style="font-size: 15px;" href="#" id="userDropdown"
-								role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<div class="d-none d-sm-block mr-sm-2 text-right">
-									<p class="text-gray-600 small m-0">
-										<%= user.username %>
-									</p>
-								</div>
-								<i class="fas fa-chevron-down mr-2 text-center text-dark"
-									style="width: 20px;top: -2px;position: relative;"></i>
-								<span class="position-relative">
-									<img class="img-profile rounded-circle"
-										src="<%= user.profilePicture ? user.profilePicture : 'https://cdn3.f-cdn.com/ppic/245304646/logo/75311776/profile_logo_75311776.jpg' %>">
-								</span>
-							</a>
-							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-								aria-labelledby="userDropdown">
-							
-								<a class="dropdown-item" href="/admin/changeInfo">
-									<i class="fas fa-book mr-2 text-center" style="width: 20px"></i>
-									Change Information
-								</a>
-								<a class="dropdown-item" href="/admin/changePricing">
-									<i class="fas fa-book mr-2 text-center" style="width: 20px"></i>
-									Change Pricing
-								</a>
-								<a class="dropdown-item" href="/admin/passChange">
-									<i class="fas fa-book mr-2 text-center" style="width: 20px"></i>
-									Change Password
-								</a>
-								<a class="dropdown-item" href="/admin/logout">
-									<i class="fas fa-sign-out-alt mr-2 text-center" style="width: 20px"></i>
-									Logout
-								</a>
-							</div>
-						</li>
-					</ul>
-				</nav>
-
-				<div class="container-fluid">
-
-
-
-					<div class="card shadow">
-						<div class="card-header py-3 d-flex align-items-center">
-							<h5 class="h5 m-0 text-primary">Dashboard</h5>
-						</div>
-
-						<div class="container">
-							<div class="row">
-								<div class="col-md-4 mb-3 mt-3">
-									<div class="card">
-										<div class="card-body">
-											<div class="template-skill-box">
-												<p class="text-primary font-weight-bold mb-0">Total Users</p>
-												<div>
-													<b>
-														<%=userlength %>
-													</b> Users
-												</div>
-												<a href="/admin/totalUsers"> <button type="button"
-														class="generate-bid-template-skill btn btn-primary btn-sm mt-2 mb-2"
-														data-id="1087" data-name="API" data-toggle="modal"
-														data-target="#bidModal">View</button></a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4 mb-3 mt-3">
-									<div class="card">
-										<div class="card-body">
-											<div class="template-skill-box">
-												<p class="text-primary font-weight-bold mb-0">Users On Trial Period</p>
-												<div>
-													<b>
-														<%=userOnTrialLength %>
-													</b> Users
-												</div>
-												<a href="/admin/trialUsers"> <button type="button"
-														class="generate-bid-template-skill btn btn-primary btn-sm mt-2 mb-2"
-														data-id="1087" data-name="API" data-toggle="modal"
-														data-target="#bidModal">View</button></a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4 mb-3 mt-3">
-									<div class="card">
-										<div class="card-body">
-											<div class="template-skill-box">
-												<p class="text-primary font-weight-bold mb-0">Users On Monthly
-													Subscription</p>
-												<div>
-													<b>
-														<%=userOnMonthlyLength %>
-													</b> Users
-												</div>
-												<a href="/admin/monthlyUsers"> <button type="button"
-														class="generate-bid-template-skill btn btn-primary btn-sm mt-2 mb-2"
-														data-id="1087" data-name="API" data-toggle="modal"
-														data-target="#bidModal">View</button></a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-4 mb-3">
-									<div class="card">
-										<div class="card-body">
-											<div class="template-skill-box">
-												<p class="text-primary font-weight-bold mb-0">Users On Semi-Annual
-													Subscription</p>
-												<div>
-													<b>
-														<%=userOnSemiAnnualLength%>
-													</b> Users
-												</div>
-												<a href="/admin/semiAnnualUsers"> <button type="button"
-														class="generate-bid-template-skill btn btn-primary btn-sm mt-2 mb-2"
-														data-id="1087" data-name="API" data-toggle="modal"
-														data-target="#bidModal">View</button></a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4 mb-3">
-									<div class="card">
-										<div class="card-body">
-											<div class="template-skill-box">
-												<p class="text-primary font-weight-bold mb-0">Users On Annual
-													Subscription</p>
-												<div>
-													<b>
-														<%=userOnAnnualLength %>
-													</b> Users
-												</div>
-												<a href="/admin/annualUsers"> <button type="button"
-														class="generate-bid-template-skill btn btn-primary btn-sm mt-2 mb-2"
-														data-id="1087" data-name="API" data-toggle="modal"
-														data-target="#bidModal">View</button></a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-md-4 mb-3">
-									<div class="card">
-										<div class="card-body">
-											<div class="template-skill-box">
-												<p class="text-primary font-weight-bold mb-0">Users Not-Subscribed</p>
-												<div>
-													<b>
-														<%=userOnNotSubscribedLength%>
-													</b> Users
-												</div>
-												<a href="/admin/notSubscribedUsers"> <button type="button"
-														class="generate-bid-template-skill btn btn-primary btn-sm mt-2 mb-2"
-														data-id="1087" data-name="API" data-toggle="modal"
-														data-target="#bidModal">View</button></a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	</div>
-
-	<script src="/assets/jquery.min.js"></script>
-	<script src="/assets/bootstrap.bundle.min.js"></script>
-	<script src="/assets/jquery.easing.min.js"></script>
-	<script src="/assets/sb-admin-2.min.js?v=6"></script>
-	<script src="/assets/jquery.dataTables.min.js"></script>
-	<script src="/assets/dataTables.bootstrap4.min.js"></script>
-	<script>
-		// Check if the success parameter is present in the URL
-		const urlParams = new URLSearchParams(window.location.search);
-		const success = urlParams.get('success');
-
-		if (success === 'true') {
-			// Display an alert message indicating that the password has been changed successfully
-			alert('Password changed successfully!');
-
-		}
-	</script>
+            if (success === 'true') {
+                // Display an alert message indicating that the password has been changed successfully
+                alert('Password changed successfully!');
+            }
+        });
+    </script>
 </body>
 
 </html>

@@ -16,136 +16,523 @@
     
     <!-- Icons css -->
     <link href="/assets/css/icons.css" rel="stylesheet" type="text/css">
-    <style>
-      .info-section {
-    display: flex;
-    justify-content: space-between;
-    color: white;
-}
-
-.info-section > div {
-    width: 48%;
-}
-
-.signup-btn {
-    padding: 10px 20px;
-    background-color: #fff;
-    color: black;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    text-align: center;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    text-decoration: none; /* Add this to remove underline */
-}
-
-.logo-img {
-    margin-left: 8px;
-    height: 30px; /* Adjust the height as needed */
-}
-
-.terms {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-/* Add the following to ensure responsive design */
-@media (max-width: 768px) {
-    .info-section {
-        flex-direction: column;
-    }
     
-    .info-section > div {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-}
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        body {
+            background-color: #040d21;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Background */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: twinkle var(--duration) infinite ease-in-out;
+            animation-delay: var(--delay);
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        
+        /* Animated Gradient Background */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(125deg, #040d21, #0a1930, #0f2b4a, #0a1930, #040d21);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+        
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Glowing Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: -1;
+        }
+        
+        .orb-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #4f46e5, #3b82f6);
+            top: -100px;
+            right: -100px;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #0ea5e9, #2563eb);
+            bottom: -200px;
+            left: -200px;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+        
+        .orb-3 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #6366f1, #4f46e5);
+            top: 50%;
+            right: 10%;
+            animation: float 12s ease-in-out infinite 2s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-20px, -30px); }
+        }
+        
+        /* Main Container */
+        .main-container {
+            display: flex;
+            min-height: 100vh;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Signup Card */
+        .signup-container {
+            width: 100%;
+            max-width: 1000px;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .signup-container:hover {
+            box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.3);
+            transform: translateY(-5px);
+        }
+        
+        /* Header */
+        .signup-header {
+            padding: 30px;
+            text-align: center;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        }
+        
+        .signup-logo {
+            display: inline-block;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .signup-logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .signup-logo img {
+            height: 50px;
+            filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.5));
+        }
+        
+        .signup-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #60a5fa, #93c5fd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .signup-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        /* Signup Button */
+        .signup-button-container {
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .signup-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 16px 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            box-shadow: 0 10px 20px rgba(29, 78, 216, 0.2);
+        }
+        
+        .signup-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s ease;
+        }
+        
+        .signup-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(29, 78, 216, 0.3);
+        }
+        
+        .signup-btn:hover::before {
+            left: 100%;
+        }
+        
+        .logo-img {
+            margin-left: 12px;
+            height: 30px;
+            filter: brightness(1.2);
+            transition: all 0.3s ease;
+        }
+        
+        .signup-btn:hover .logo-img {
+            transform: scale(1.1);
+        }
+        
+        /* Terms */
+        .terms {
+            text-align: center;
+            margin: 0 auto 30px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+            max-width: 500px;
+            line-height: 1.6;
+            padding: 0 30px;
+        }
+        
+        /* Info Section */
+        .info-section {
+            display: flex;
+            justify-content: space-between;
+            padding: 30px;
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+            gap: 30px;
+        }
+        
+        .info-box {
+            flex: 1;
+            background: rgba(15, 43, 74, 0.5);
+            border-radius: 16px;
+            padding: 20px;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .info-box:hover {
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 10px 20px rgba(29, 78, 216, 0.2);
+            transform: translateY(-5px);
+        }
+        
+        .info-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #60a5fa;
+        }
+        
+        .info-text {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 15px;
+            line-height: 1.6;
+        }
+        
+        .pricing-list {
+            list-style-type: none;
+            margin-top: 12px;
+        }
+        
+        .pricing-list li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .pricing-list li::before {
+            content: '•';
+            color: #60a5fa;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        .pricing-highlight {
+            font-weight: 600;
+            color: #60a5fa;
+        }
+        
+        /* Login Link */
+        .login-link-container {
+            text-align: center;
+            margin-top: 30px;
+            padding-bottom: 20px;
+        }
+        
+        .login-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
+        }
+        
+        .login-link {
+            color: #60a5fa;
+            font-weight: 600;
+            text-decoration: none;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .login-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(to right, #60a5fa, #93c5fd);
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+        }
+        
+        .login-link:hover {
+            color: #93c5fd;
+        }
+        
+        .login-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .info-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .signup-title {
+                font-size: 24px;
+            }
+            
+            .signup-container {
+                max-width: 500px;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fadeIn {
+            animation: fadeIn 0.8s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+        
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
     </style>
 </head>
 
-<body class="bg-slate-900 relative h-full">
-    <div>
-        <div class="fixed top-0 -z-10">
-            <div class="blur-[200px] w-[500px] h-[500px] rounded-full bg-gradient-to-tl from-red-600/40 to-pink-600/40"></div>
-        </div>
-        <div class="fixed top-0 end-0 -z-10">
-            <div class="blur-[200px] w-[500px] h-[500px] rounded-full bg-gradient-to-tl from-red-600/40 to-pink-600/40"></div>
-        </div>
-        <div class="fixed inset-0 flex items-center justify-center -z-10">
-            <div class="blur-[200px] w-[500px] h-[500px] rounded-full bg-gradient-to-tl from-red-600/40 to-pink-600/40"></div>
-        </div>
-        <div class="fixed bottom-0 start-0 -z-10">
-            <div class="blur-[200px] w-[500px] h-[500px] rounded-full bg-gradient-to-tl from-red-600/40 to-pink-600/40"></div>
-        </div>
-        <div class="fixed bottom-0 end-0 -z-10">
-            <div class="blur-[200px] w-[500px] h-[500px] rounded-full bg-gradient-to-tl from-red-600/40 to-pink-600/40"></div>
-        </div>
-    </div><!-- end body bg gradient -->
-
-    <section class="flex items-center py-6 px-0 lg:p-10 w-full lg:h-screen">
+<body>
+    <!-- Animated Background -->
+    <div class="gradient-bg"></div>
+    <div class="stars-container" id="stars"></div>
+    
+    <!-- Glowing Orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    
+    <!-- Main Container -->
+    <div class="main-container">
         <div class="container">
-            <div class="backdrop-blur-2xl bg-default-950/40 rounded-2xl overflow-hidden max-w-xl mx-auto">
-                <div class="grid lg:grid-cols-1 gap-10">
-                    <div class="flex flex-col h-full p-10">
-                        <div class="pb-10">
-                            <a href="/" class="flex">
-                                <h2><image style="height: 50px;" src="/images/bidmanwhite.png"></image></h2>
-                            </a>
-                        </div>
-                        <div class="pb-6">
-                            <h4 class="text-2xl font-bold text-white mb-4">Signup</h4>
-                            <p class="text-default-300 mb-8 max-w-sm">Signup with your freelancer account.</p>
-                            <div class="text-center mb-6">
-                                <a href="/authorize" class="signup-btn">
-                                  Signup with <img src="/images/logos/freelancer.png" alt="Freelancer" height="30px" class="logo-img">
-                                </a>
-                            </div>
-                            <p class="terms" style="color: #eee;">By creating an account you agree to our Privacy Policy and Terms & Conditions</p>
-                        </div>
-                        <div class="info-section">
-                            <div style="color: greenyellow;">
-                                <p>When you register for Bidman, you start with a 5-day free trial. This free trial period allows you to explore all Bidman features.</p>
-                            </div>
-                            <div style="color: greenyellow;">
-                                <p>Subscription Pricing</p>
-                                <ul>
-                                    <li><b> 
-                                        <%= payments && payments.indianMonthlyAmount ? payments.indianMonthlyAmount : '1494.98/month' %> |
-                                        <%= payments && payments.indianBiMonthlyAmount ? payments.indianBiMonthlyAmount : '8071.40/6 Months' %> |
-                                        <%= payments && payments.indianYearlyAmount ? payments.indianYearlyAmount : '14942.49/year' %> 
-                                      </b> for Indian profiles</li>
-                                      
-                                      <li><b>
-                                        <%= payments && payments.nonIndianMonthlyAmount ? payments.nonIndianMonthlyAmount : '30 USD/month' %> |
-                                        <%= payments && payments.nonIndianBiMonthlyAmount ? payments.nonIndianBiMonthlyAmount : '162 USD/6 Months' %> |
-                                        <%= payments && payments.nonIndianYearlyAmount ? payments.nonIndianYearlyAmount : '300 USD/year' %>
-                                      </b> per month for Non-Indian profiles</li>
-                                </ul>
-                                
-                            </div>
-                        </div>
-                    </div> <!-- end col -->
-                </div> <!-- end grid -->
-            </div> <!-- end bg -->
-            <div class="w-full text-center mt-5">
-                <p class="text-default-300 leading-6 text-base font-medium">Already have an account? <a href="/login" class="text-primary font-semibold ms-1">Login</a></p>
+            <div class="signup-container animate-fadeIn">
+                <div class="signup-header">
+                    <a href="/" class="signup-logo">
+                        <img src="/images/bidmanwhite.png" alt="AutoBids Logo">
+                    </a>
+                    <h1 class="signup-title">Create Your Account</h1>
+                    <p class="signup-subtitle">Join AutoBids and revolutionize your freelancing journey with AI-powered bidding</p>
+                </div>
+                
+                <div class="signup-button-container animate-fadeIn delay-1">
+                    <a href="/authorize" class="signup-btn">
+                        Sign up with <img src="/images/logos/freelancer.png" alt="Freelancer" class="logo-img">
+                    </a>
+                </div>
+                
+                <p class="terms animate-fadeIn delay-2">
+                    By creating an account you agree to our Privacy Policy and Terms & Conditions
+                </p>
+                
+                <div class="info-section">
+                    <div class="info-box animate-fadeIn delay-3">
+                        <h3 class="info-title">Free Trial</h3>
+                        <p class="info-text">
+                            When you register for AutoBids, you start with a 5-day free trial. This free trial period allows you to explore all AutoBids features without any commitment.
+                        </p>
+                    </div>
+                    
+                    <div class="info-box animate-fadeIn delay-4">
+                        <h3 class="info-title">Subscription Pricing</h3>
+                        <ul class="pricing-list">
+                            <li>
+                                <span class="pricing-highlight">
+                                    <%= payments && payments.indianMonthlyAmount ? payments.indianMonthlyAmount : '1494.98/month' %> |
+                                    <%= payments && payments.indianBiMonthlyAmount ? payments.indianBiMonthlyAmount : '8071.40/6 Months' %> |
+                                    <%= payments && payments.indianYearlyAmount ? payments.indianYearlyAmount : '14942.49/year' %>
+                                </span>
+                                for Indian profiles
+                            </li>
+                            <li>
+                                <span class="pricing-highlight">
+                                    <%= payments && payments.nonIndianMonthlyAmount ? payments.nonIndianMonthlyAmount : '30 USD/month' %> |
+                                    <%= payments && payments.nonIndianBiMonthlyAmount ? payments.nonIndianBiMonthlyAmount : '162 USD/6 Months' %> |
+                                    <%= payments && payments.nonIndianYearlyAmount ? payments.nonIndianYearlyAmount : '300 USD/year' %>
+                                </span>
+                                for Non-Indian profiles
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-        </div><!-- end container -->
-    </section><!-- end section -->
-
-    <!-- footer start -->
-    <footer class="2xl:fixed bottom-0 start-0 end-0 py-3">
-        <div class="container">
-            <p class="text-base font-medium text-center text-default-200">
-                <script>document.write(new Date().getFullYear())</script>
-                © AutoBids </a>
-            </p>
+            
+            <div class="login-link-container animate-fadeIn" style="animation-delay: 0.5s;">
+                <p class="login-text">
+                    Already have an account? <a href="/login" class="login-link">Login</a>
+                </p>
+            </div>
         </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p>
+            <script>document.write(new Date().getFullYear())</script> © AutoBids
+        </p>
     </footer>
-    <!-- footer end -->
+    
+    <script>
+        // Create stars for background
+        document.addEventListener('DOMContentLoaded', function() {
+            const starsContainer = document.getElementById('stars');
+            const starsCount = 100;
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Random position
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                
+                // Random size
+                const size = Math.random() * 2 + 1;
+                
+                // Random animation duration and delay
+                const duration = Math.random() * 3 + 2;
+                const delay = Math.random() * 5;
+                
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.setProperty('--duration', `${duration}s`);
+                star.style.setProperty('--delay', `${delay}s`);
+                
+                starsContainer.appendChild(star);
+            }
+        });
+    </script>
 </body>
 
 </html>

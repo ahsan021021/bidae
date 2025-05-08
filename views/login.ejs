@@ -17,92 +17,638 @@
     
     <!-- Icons css -->
     <link href="/assets/css/icons.css" rel="stylesheet" type="text/css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+        
+        body {
+            background-color: #040d21;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Animated Background */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: twinkle var(--duration) infinite ease-in-out;
+            animation-delay: var(--delay);
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        
+        /* Animated Gradient Background */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(125deg, #040d21, #0a1930, #0f2b4a, #0a1930, #040d21);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+        
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Glowing Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: -1;
+        }
+        
+        .orb-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, #4f46e5, #3b82f6);
+            top: -100px;
+            right: -100px;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, #0ea5e9, #2563eb);
+            bottom: -200px;
+            left: -200px;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+        
+        .orb-3 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, #6366f1, #4f46e5);
+            top: 50%;
+            right: 10%;
+            animation: float 12s ease-in-out infinite 2s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-20px, -30px); }
+        }
+        
+        /* Main Container */
+        .main-container {
+            display: flex;
+            min-height: 100vh;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Login Card */
+        .login-container {
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+        
+        /* Left Side - Decorative */
+        .login-decorative {
+            flex: 1;
+            background: linear-gradient(135deg, #0f2b4a 0%, #164e87 100%);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            display: none; /* Hidden on mobile */
+        }
+        
+        .login-decorative::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        
+        .login-decorative-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+        
+        .decorative-title {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #60a5fa, #93c5fd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .decorative-text {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        
+        .decorative-image {
+            width: 80%;
+            max-width: 300px;
+            margin: 0 auto;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Right Side - Form */
+        .login-form-container {
+            flex: 1;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .login-header {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .login-logo {
+            display: inline-block;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .login-logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .login-logo img {
+            height: 50px;
+            filter: drop-shadow(0 0 10px rgba(96, 165, 250, 0.5));
+        }
+        
+        .login-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #60a5fa, #93c5fd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .login-subtitle {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+        }
+        
+        /* Form Styling */
+        .login-form {
+            width: 100%;
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+            position: relative;
+        }
+        
+        .form-label {
+            position: absolute;
+            left: 20px;
+            top: 18px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 16px;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .form-control {
+            width: 100%;
+            background: rgba(15, 43, 74, 0.5);
+            border: 2px solid rgba(96, 165, 250, 0.2);
+            border-radius: 12px;
+            padding: 18px 20px;
+            font-size: 16px;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.2);
+            outline: none;
+        }
+        
+        .form-control:focus + .form-label,
+        .form-control:not(:placeholder-shown) + .form-label {
+            transform: translateY(-30px) scale(0.85);
+            color: #60a5fa;
+        }
+        
+        /* Remember Me Checkbox */
+        .form-check {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+            position: relative;
+        }
+        
+        .form-check-input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        
+        .form-check-label {
+            padding-left: 35px;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
+            user-select: none;
+            position: relative;
+        }
+        
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 22px;
+            width: 22px;
+            background-color: rgba(15, 43, 74, 0.5);
+            border: 2px solid rgba(96, 165, 250, 0.3);
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        
+        .form-check-input:checked ~ .checkmark {
+            background-color: #3b82f6;
+            border-color: #3b82f6;
+        }
+        
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        
+        .form-check-input:checked ~ .checkmark:after {
+            display: block;
+        }
+        
+        .form-check-label .checkmark:after {
+            left: 7px;
+            top: 3px;
+            width: 6px;
+            height: 11px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        
+        /* Login Button */
+        .login-button {
+            width: 100%;
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        
+        .login-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.6s ease;
+        }
+        
+        .login-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(29, 78, 216, 0.3);
+        }
+        
+        .login-button:hover::before {
+            left: 100%;
+        }
+        
+        /* Register Link */
+        .register-link-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .register-text {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 15px;
+        }
+        
+        .register-link {
+            color: #60a5fa;
+            font-weight: 600;
+            text-decoration: none;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .register-link::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(to right, #60a5fa, #93c5fd);
+            transform: scaleX(0);
+            transform-origin: bottom right;
+            transition: transform 0.3s ease;
+        }
+        
+        .register-link:hover {
+            color: #93c5fd;
+        }
+        
+        .register-link:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        
+        /* Alert Styling */
+        .alert {
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            animation: slideIn 0.3s ease forwards;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .alert-danger {
+            background-color: rgba(239, 68, 68, 0.15);
+            border-left: 4px solid #ef4444;
+            color: #fca5a5;
+        }
+        
+        .alert-success {
+            background-color: rgba(34, 197, 94, 0.15);
+            border-left: 4px solid #22c55e;
+            color: #86efac;
+        }
+        
+        .alert-icon {
+            margin-right: 12px;
+            font-size: 18px;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .footer-logo {
+            display: inline-block;
+            vertical-align: middle;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-logo:hover {
+            transform: scale(1.1);
+            filter: brightness(1.2);
+        }
+        
+        /* Responsive */
+        @media (min-width: 768px) {
+            .login-decorative {
+                display: flex;
+            }
+            
+            .login-form-container {
+                border-radius: 0 24px 24px 0;
+            }
+        }
+        
+        @media (max-width: 767px) {
+            .login-container {
+                max-width: 500px;
+            }
+            
+            .login-form-container {
+                border-radius: 24px;
+                padding: 30px;
+            }
+            
+            .login-title {
+                font-size: 24px;
+            }
+        }
+    </style>
 </head>
 
-<body class="bg-slate-900 relative h-full">
-    <div>
-        <div class="fixed top-0 -z-10">
-            <div class="blur-[200px] w-[500px] h-[500px] rounded-full bg-gradient-to-tl from-red-600/40 to-pink-600/40"></div>
-        </div>
-        <div class="fixed top-0 end-0 -z-10">
-            <div class="blur-[200px] w-[500px] h-[500px] rounded-full bg-gradient-to-tl from-red-600/40 to-pink-600/40"></div>
-        </div>
-        <div class="fixed inset-0 flex items-center justify-center -z-10">
-            <div class="blur-[200px] w-[500px] h-[500px] rounded-full bg-gradient-to-tl from-red-600/40 to-pink-600/40"></div>
-        </div>
-        <div class="fixed bottom-0 start-0 -z-10">
-            <div class="blur-[200px] w-[500px] h-[500px] rounded-full bg-gradient-to-tl from-red-600/40 to-pink-600/40"></div>
-        </div>
-        <div class="fixed bottom-0 end-0 -z-10">
-            <div class="blur-[200px] w-[500px] h-[500px] rounded-full bg-gradient-to-tl from-red-600/40 to-pink-600/40"></div>
-        </div>
-    </div><!-- end body bg gradient -->
-
-    <section class="flex items-center py-6 px-0 lg:p-10 w-full lg:h-screen">
-        <div class="container">
-            <div class="backdrop-blur-2xl bg-default-950/40 rounded-2xl overflow-hidden max-w-xl mx-auto">
-                <div class="grid lg:grid-cols-1 gap-10">
-                    
-                    <div class="flex flex-col h-full p-10">
-                        <div class="pb-10">
-                            <a href="/" class="flex">
-                                <h3 class="text-3xl font-medium capitalize text-white "><image src="/images/bidmanwhite.png"></image></h3>
-                            </a>
-                            
-                        </div>
-                        <div class="pb6 my-auto">
-                            <h4 class="text-2xl font-bold text-white mb-4">Signin</h4>
-                            <p class="text-default-300 mb-8 max-w-sm ">Signin with your username & password.</p>
-                            <form class="user" method="POST" action="/login">
-
-                                <% if (messages.error) { %>
-                                    <% messages.error.forEach(function(message) { %>
-                                        <div class="alert alert-danger"><%= message %></div>
-                                    <% }); %>
-                                <% } %>
-                                
-                                <% if (messages.success) { %>
-                                    <% messages.success.forEach(function(message) { %>
-                                        <div class="alert alert-success"><%= message %></div>
-                                    <% }); %>
-                                <% } %>
-                                <div class="form-group">
-<input type="text" style="width: 100%; border-radius : 5px;margin-bottom:5px" class="form-control form-control-user" id="input-username" name="username" value="" placeholder="Enter username" required autofocus="on">
-</div>
-<div class="form-group">
-<input type="password" style="width: 100%; border-radius : 5px;margin-bottom:5px" class="form-control form-control-user" id="input-password" name="password" placeholder="Enter password" required>
-</div>
-<div class="form-group pl-0">
-<div class="custom-control custom-checkbox small d-inline-block mr-5">
-<input type="checkbox" name="remember"  value="true" class="custom-control-input" id="input-remember">
-<label class="custom-control-label" for="input-remember">Remember me for 30 days</label>
-</div>
-</div>
-<button type="submit" class="btn btn-primary btn-user btn-block" style="margin-top: 10px; width: 100%">Login</button>
-</form>
-                        </div>
-                        <div>
-                           
-                        </div>
-                    </div> <!-- end col -->
-                </div> <!-- end grid -->
-            </div> <!-- end bg -->
-            <div class="w-full text-center mt-5">
-                <p class="text-default-300 leading-6 text-base font-medium">Don't have an account? <a href="/signup" class="text-primary font-semibold ms-1">Register</a></p>
+<body>
+    <!-- Animated Background -->
+    <div class="gradient-bg"></div>
+    <div class="stars-container" id="stars"></div>
+    
+    <!-- Glowing Orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    
+    <!-- Main Container -->
+    <div class="main-container">
+        <div class="login-container">
+            <!-- Left Side - Decorative -->
+            <div class="login-decorative">
+                <div class="login-decorative-content">
+                    <h2 class="decorative-title">Welcome to AutoBids</h2>
+                    <p class="decorative-text">Revolutionize your freelancing journey with our AI-powered bidding system. Get more clients, save time, and increase your success rate.</p>
+                    <img src="" alt="AutoBids Illustration" class="decorative-image">
+                </div>
             </div>
-        </div><!-- end container -->
-    </section><!-- end section -->
-
-    <!-- footer start -->
-    <footer class="2xl:fixed bottom-0 start-0 end-0 my-3">
-        <div class="container">
-            <p class="text-base font-medium text-center text-default-200">
-                <script>document.write(new Date().getFullYear())</script>
-                ©	<h2><image style="height: 30px;" src="/images/bidmanclack.png"></image></h2></a>
-            </p>
+            
+            <!-- Right Side - Form -->
+            <div class="login-form-container">
+                <div class="login-header">
+                    <a href="/" class="login-logo">
+                        <img src="/images/bidmanwhite.png" alt="AutoBids Logo">
+                    </a>
+                    <h1 class="login-title">Sign In to Your Account</h1>
+                    <p class="login-subtitle">Access your dashboard and start automating your bids</p>
+                </div>
+                
+                <form class="login-form" method="POST" action="/login">
+                    <% if (messages.error) { %>
+                        <% messages.error.forEach(function(message) { %>
+                            <div class="alert alert-danger">
+                                <span class="alert-icon">⚠️</span>
+                                <%= message %>
+                            </div>
+                        <% }); %>
+                    <% } %>
+                    
+                    <% if (messages.success) { %>
+                        <% messages.success.forEach(function(message) { %>
+                            <div class="alert alert-success">
+                                <span class="alert-icon">✓</span>
+                                <%= message %>
+                            </div>
+                        <% }); %>
+                    <% } %>
+                    
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="input-username" name="username" value="" placeholder=" " required autofocus="on">
+                        <label for="input-username" class="form-label">Username</label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="input-password" name="password" placeholder=" " required>
+                        <label for="input-password" class="form-label">Password</label>
+                    </div>
+                    
+                    <div class="form-check">
+                        <input type="checkbox" name="remember" value="true" class="form-check-input" id="input-remember">
+                        <label class="form-check-label" for="input-remember">
+                            Remember me for 30 days
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="login-button">Sign In</button>
+                </form>
+                
+                <div class="register-link-container">
+                    <p class="register-text">Don't have an account? <a href="/signup" class="register-link">Register Now</a></p>
+                </div>
+            </div>
         </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <p>
+            <script>document.write(new Date().getFullYear())</script> ©
+            <a href="/" class="footer-logo">
+                <img style="height: 30px;" src="/images/bidmanclack.png" alt="AutoBids Logo">
+            </a>
+        </p>
     </footer>
-    <!-- footer end -->
+    
+    <script>
+        // Create stars for background
+        document.addEventListener('DOMContentLoaded', function() {
+            const starsContainer = document.getElementById('stars');
+            const starsCount = 100;
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Random position
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                
+                // Random size
+                const size = Math.random() * 2 + 1;
+                
+                // Random animation duration and delay
+                const duration = Math.random() * 3 + 2;
+                const delay = Math.random() * 5;
+                
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.setProperty('--duration', `${duration}s`);
+                star.style.setProperty('--delay', `${delay}s`);
+                
+                starsContainer.appendChild(star);
+            }
+            
+            // Floating animation for form elements
+            const formElements = document.querySelectorAll('.form-group, .form-check, .login-button');
+            formElements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'all 0.5s ease';
+                
+                setTimeout(() => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, 300 + (index * 100));
+            });
+        });
+    </script>
 </body>
 
 </html>
