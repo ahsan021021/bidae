@@ -353,7 +353,8 @@ router.get("/authorize", (req, res) => {
 
   const prompt = "select_account consent";
   const advancedScopes = "1 2 3 6";
-  const authorizationUrl = `${oauthUri}?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&scope=basic&prompt=${prompt}&advanced_scopes=${advancedScopes}&state=${state}`;
+  const authorizationUrl = `${oauthUri}?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&scope=basic&prompt=${prompt}&state=${state}
+`;
   res.redirect(authorizationUrl);
 });
 
