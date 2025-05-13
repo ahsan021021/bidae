@@ -6,266 +6,801 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>Template Categories | AutoBids</title>
+    <title>Template Categories | Bidae</title>
 
-    <meta property="og:url" content="https://AutoBids.co/" />
+    <meta property="og:url" content="https://Bidae.co/" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="AutoBids" />
-    <meta property="og:description" content="AutoBids is a tool which gives you upper hand to other freelancers" />
+    <meta property="og:title" content="Bidae" />
+    <meta property="og:description" content="Bidae is a tool which gives you upper hand to other freelancers" />
     <meta property="og:image" content="https://cdn.bidman.co/images/logo.png" />
 
     <!-- Favicon -->
     <link rel="apple-touch-icon" href="https://cdn.bidman.co/images/favicon/favicon-120x120.png" sizes="120x120">
     <link rel="apple-touch-icon" href="https://cdn.bidman.co/images/favicon/favicon-152x152.png" sizes="152x152">
     <link rel="apple-touch-icon" href="https://cdn.bidman.co/images/favicon/favicon-180x180.png" sizes="180x180">
-    <meta name="theme-color" content="#1e1e2d">
-    <meta name="msapplication-TileColor" content="#1e1e2d">
+    <meta name="theme-color" content="#0f172a">
+    <meta name="msapplication-TileColor" content="#FFFFFF">
     <meta name="msapplication-TileImage" content="https://cdn.bidman.co/images/favicon/favicon-144x144.png">
 
-    <!-- Fonts and icons -->
-    <link href="https://cdn.bidman.co/app_assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
-        type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.bidman.co/app_assets/css/toastr.min.css" rel="stylesheet">
-
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" type="text/css">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- DataTables -->
+    <link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/responsive/2.4.1/css/responsive.bootstrap5.min.css" rel="stylesheet">
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
     <style>
         :root {
-            --primary: #6366f1;
-            --primary-hover: #4f46e5;
-            --secondary: #9333ea;
+            --primary: #3b82f6;
+            --primary-hover: #2563eb;
+            --secondary: #60a5fa;
+            --dark-blue: #0f172a;
+            --medium-blue: #1e293b;
+            --light-blue: #334155;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --text-light: rgba(255, 255, 255, 0.9);
+            --text-lighter: rgba(255, 255, 255, 0.6);
+            --border-color: rgba(59, 130, 246, 0.2);
+            --card-bg: rgba(30, 41, 59, 0.7);
             --success: #10b981;
-            --info: #06b6d4;
             --warning: #f59e0b;
             --danger: #ef4444;
-            --dark: #1e1e2d;
-            --darker: #151521;
-            --light: #f3f4f6;
-            --border: #2e2e40;
-            --text-primary: #e2e8f0;
-            --text-secondary: #94a3b8;
-            --card-bg: #1e1e2d;
-            --body-bg: #151521;
-            --header-bg: #1e1e2d;
-            --sidebar-bg: #1e1e2d;
         }
-
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+        
         body {
-            background-color: var(--body-bg);
-            color: var(--text-primary);
-            font-family: 'Nunito', sans-serif;
+            background-color: var(--dark-blue);
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
         }
-
+        
+        /* Animated Background */
+        .stars-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: #fff;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: twinkle var(--duration) infinite ease-in-out;
+            animation-delay: var(--delay);
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+        
+        /* Animated Gradient Background */
+        .gradient-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: linear-gradient(125deg, var(--dark-blue), var(--medium-blue), var(--light-blue), var(--medium-blue), var(--dark-blue));
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+        }
+        
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Glowing Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.15;
+            z-index: -1;
+        }
+        
+        .orb-1 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--accent-purple), var(--primary));
+            top: -100px;
+            right: -100px;
+            animation: float 8s ease-in-out infinite;
+        }
+        
+        .orb-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--accent-pink), var(--primary));
+            bottom: -200px;
+            left: -200px;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+        
+        .orb-3 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--secondary), var(--primary));
+            top: 50%;
+            right: 10%;
+            animation: float 12s ease-in-out infinite 2s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-20px, -30px); }
+        }
+        
+        /* Navbar */
         .navbar {
-            background-color: var(--header-bg) !important;
-            border-bottom: 1px solid var(--border);
+            background-color: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+            position: relative;
+            z-index: 100;
         }
-
+        
         .navbar-brand {
-            color: var(--text-primary) !important;
+            font-weight: 700;
+            font-size: 24px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-right: 40px;
         }
-
+        
         .nav-link {
-            color: var(--text-secondary) !important;
+            color: var(--text-light) !important;
+            font-weight: 500;
+            padding: 8px 16px !important;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            margin: 0 5px;
         }
-
-        .nav-link:hover,
-        .nav-link:focus {
-            color: var(--text-primary) !important;
+        
+        .nav-link:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #fff !important;
         }
-
+        
         .nav-link.active {
-            color: var(--primary) !important;
+            background-color: rgba(59, 130, 246, 0.2);
+            color: var(--secondary) !important;
         }
-
-        .dropdown-menu {
-            background-color: var(--dark);
-            border: 1px solid var(--border);
-        }
-
-        .dropdown-item {
-            color: var(--text-secondary);
-        }
-
-        .dropdown-item:hover,
-        .dropdown-item:focus {
-            background-color: var(--darker);
-            color: var(--text-primary);
-        }
-
+        
+        /* Card Styles */
         .card {
             background-color: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin-bottom: 1.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
         }
-
+        
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(59, 130, 246, 0.4);
+        }
+        
         .card-header {
-            background-color: rgba(0, 0, 0, 0.1);
-            border-bottom: 1px solid var(--border);
+            background-color: rgba(15, 23, 42, 0.6);
+            border-bottom: 1px solid var(--border-color);
+            border-radius: 16px 16px 0 0 !important;
+            padding: 20px;
         }
-
+        
+        .card-body {
+            padding: 24px;
+        }
+        
+        .card-footer {
+            background-color: rgba(15, 23, 42, 0.4);
+            border-top: 1px solid var(--border-color);
+            border-radius: 0 0 16px 16px !important;
+            padding: 16px 24px;
+        }
+        
+        /* Alert Styles */
+        .alert {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-light);
+        }
+        
+        .alert-success {
+            background: linear-gradient(90deg, rgba(53,27,49,1) 0%, rgba(102,29,58,1) 100%);
+            border-color: rgba(102,29,58,0.5);
+        }
+        
+        .alert-warning {
+            background-color: rgba(245, 158, 11, 0.1);
+            border-color: rgba(245, 158, 11, 0.3);
+        }
+        
+        /* Dropdown Menu */
+        .dropdown-menu {
+            background-color: var(--medium-blue);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            padding: 12px 0;
+            z-index: 1000;
+        }
+        
+        .dropdown-item {
+            color: var(--text-light);
+            padding: 10px 20px;
+            transition: all 0.2s ease;
+        }
+        
+        .dropdown-item:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #fff;
+        }
+        
+        .dropdown-divider {
+            border-top: 1px solid var(--border-color);
+            margin: 8px 0;
+        }
+        
+        /* Profile Image */
+        .img-profile {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border: 2px solid var(--border-color);
+        }
+        
+        /* Settings Sidebar */
+        .setting-sidebar {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .setting-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            border-radius: 8px;
+            color: var(--text-light);
+            text-decoration: none;
+            transition: all 0.2s ease;
+            margin-bottom: 5px;
+        }
+        
+        .setting-item:hover {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: #fff;
+        }
+        
+        .setting-item.active {
+            background-color: rgba(59, 130, 246, 0.2);
+            color: var(--secondary);
+        }
+        
+        .setting-item i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Table Styles */
         .table {
-            color: var(--text-primary);
+            color: var(--text-light);
         }
-
+        
         .table-bordered {
-            border: 1px solid var(--border);
+            border-color: var(--border-color);
         }
-
-        .table-bordered th,
-        .table-bordered td {
-            border: 1px solid var(--border);
+        
+        .table th {
+            background-color: rgba(15, 23, 42, 0.6);
+            border-color: var(--border-color);
+            color: var(--text-light);
+            font-weight: 600;
         }
-
-        .btn-primary {
+        
+        .table td {
+            border-color: var(--border-color);
+            vertical-align: middle;
+        }
+        
+        /* Mobile Settings Toggle */
+        .setting-collpase-btn {
+            display: none;
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            background-color: var(--card-bg);
+            color: var(--text-light);
+            border-radius: 8px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid var(--border-color);
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 991.98px) {
+            .setting-collpase-btn {
+                display: block;
+            }
+            
+            .setting-container {
+                display: block;
+            }
+            
+            .setting-sidebar {
+                display: none;
+                margin-bottom: 20px;
+            }
+            
+            .setting-container.show-sidebar .setting-sidebar {
+                display: block;
+            }
+            
+            .navbar-brand {
+                margin-right: 20px;
+            }
+            
+            .card-body {
+                padding: 16px;
+            }
+        }
+        
+        @media (max-width: 767.98px) {
+            .navbar .container-fluid {
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            
+            .nav-link {
+                padding: 6px 10px !important;
+                margin: 0 2px;
+                font-size: 14px;
+            }
+            
+            .card-header {
+                padding: 15px;
+            }
+            
+            .card-body {
+                padding: 12px;
+            }
+            
+            .card-footer {
+                padding: 12px 15px;
+            }
+            
+            .table-responsive {
+                font-size: 14px;
+            }
+            
+            .dropdown-menu {
+                min-width: 180px;
+            }
+        }
+        
+        @media (max-width: 575.98px) {
+            .navbar-brand img {
+                height: 24px !important;
+            }
+            
+            .nav-link {
+                padding: 5px 8px !important;
+                margin: 0 1px;
+                font-size: 13px;
+            }
+            
+            .img-profile {
+                width: 32px;
+                height: 32px;
+            }
+            
+            .alert {
+                padding: 12px;
+            }
+            
+            .btn-sm {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.75rem;
+            }
+            
+            .dropdown-item {
+                padding: 8px 15px;
+                font-size: 14px;
+            }
+        }
+        
+        /* Layout */
+        @media (min-width: 992px) {
+            .setting-container {
+                display: flex;
+                gap: 20px;
+            }
+            
+            .setting-sidebar {
+                width: 250px;
+                flex-shrink: 0;
+            }
+            
+            .setting-content {
+                flex-grow: 1;
+            }
+        }
+        
+        /* DataTables Responsive Styles */
+        .dtr-details {
+            width: 100%;
+        }
+        
+        .dtr-title {
+            font-weight: 600;
+            padding-right: 10px;
+        }
+        
+        .dtr-data {
+            word-break: break-word;
+        }
+        
+        table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before, 
+        table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
             background-color: var(--primary);
-            border-color: var(--primary);
+            border: 1px solid var(--primary-hover);
         }
-
-        .btn-primary:hover {
-            background-color: var(--primary-hover);
+        
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            color: var(--text-light) !important;
+        }
+        
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current, 
+        .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+            background: var(--primary);
             border-color: var(--primary-hover);
+            color: white !important;
         }
-
-        .btn-danger {
-            background-color: var(--danger);
-            border-color: var(--danger);
+        
+        .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: var(--border-color);
+            color: white !important;
         }
-
-        .btn-danger:hover {
-            background-color: #c63737;
-            border-color: #c63737;
+        
+        .dataTables_wrapper .dataTables_length, 
+        .dataTables_wrapper .dataTables_filter, 
+        .dataTables_wrapper .dataTables_info, 
+        .dataTables_wrapper .dataTables_processing, 
+        .dataTables_wrapper .dataTables_paginate {
+            color: var(--text-light);
+        }
+        
+        .dataTables_wrapper .dataTables_filter input {
+            background-color: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            border-radius: 6px;
+            padding: 5px 10px;
+        }
+        
+        .dataTables_wrapper .dataTables_length select {
+            background-color: rgba(15, 23, 42, 0.6);
+            border: 1px solid var(--border-color);
+            color: var(--text-light);
+            border-radius: 6px;
+            padding: 5px 10px;
         }
     </style>
 </head>
 
-<body>
+<body id="page-top" class="sidebar-toggled">
+    <!-- Background Elements -->
+    <div class="gradient-bg"></div>
+    <div class="stars-container" id="stars-container"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    
     <div id="wrapper">
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm mb-4">
-            <div class="container-fluid">
-                <a class="navbar-brand d-flex align-items-center" href="/myBids">
-                    <h2 class="m-0">AUTOBIDS</h2>
-                </a>
+        <div id="content-wrapper" class="d-flex flex-column has-setting">
+            <div id="content">
+                <!-- Navbar -->
+                <nav class="navbar navbar-expand navbar-dark mb-4 static-top shadow">
+                    <div class="container-fluid">
+                        <a class="navbar-brand position-relative" href="/myBids">
+                            <h2>
+                                <img style="height: 30px;" src="/images/bidmanclack.png" alt="Bidae Logo">
+                            </h2>
+                        </a>
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link" href="/myBids" role="button">
+                                    <span class="d-none d-sm-inline">My&nbsp;</span>Bids
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/search" role="button">
+                                    Search<span class="d-none d-sm-inline">&nbsp;Projects</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="/bidai" role="button">
+                                    <span class="d-none d-sm-inline">Bidae&nbsp;</span>AI
+                                </a>
+                            </li>
+                        </ul>
 
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/dashboard">Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/myBids">My Bids</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/search">Search Projects</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" href="/tcats">Template Categories</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/temp">Templates</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/settings">Settings</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/bidai"
-                                style="color: #f97316 !important; font-weight: 600">Autobids AI</a>
-                        </li>
-                    </ul>
-
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <div class="d-none d-sm-block me-2 text-end">
-                                    <p class="small m-0">
-                                        <%= user.username %>
-                                    </p>
-                                </div>
-                                <img class="img-profile rounded-circle"
-                                    src="<%= user.profilePicture ? user.profilePicture : 'https://cdn3.f-cdn.com/ppic/245304646/logo/75311776/profile_logo_75311776.jpg' %>">
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="userDropdown">
-                                <li>
-                                    <a class="dropdown-item text-success fw-bold"
-                                        href="/autoBidTurnOn?autoBid=<%= userAutoBid === 'ON' ? 'Off' : 'ON' %>">
-                                        <i class="fas fa-check me-2"></i>
-                                        Autobidding is <%= userAutoBid==='ON' ? 'ON' : 'OFF' %>
-                                            <div class="small text-muted mt-1 fst-italic">
-                                                Turning on autobidding from here will not apply any bid or time limit
-                                            </div>
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <div class="d-none d-sm-block me-2 text-end">
+                                        <p class="text-light small m-0"><%= user.username %></p>
+                                    </div>
+                                    <i class="fas fa-chevron-down me-2 text-center" style="width: 20px;top: -2px;position: relative;"></i>
+                                    <span class="position-relative">
+                                        <img class="img-profile rounded-circle" src="<%= user.profilePicture ? user.profilePicture : 'https://cdn3.f-cdn.com/ppic/245304646/logo/75311776/profile_logo_75311776.jpg' %>">
+                                    </span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end shadow animated--grow-in" aria-labelledby="userDropdown">
+                                    <a class="dropdown-item text-success" href="/autoBidTurnOn?autoBid=<%= userAutoBid === 'ON' ? 'Off' : 'ON' %>&redirect=<%= encodeURIComponent(currentUrl) %>" style="font-weight: 600; font-size: 16px">
+                                        <i class="fas fa-check me-2 text-center" style="width: 20px"></i>
+                                        Autobidding is <%= userAutoBid==='ON' ? 'ON' : 'OFF' %> 
+                                        <div style="white-space: initial; font-size: 12px !important; padding: 5px 0px 0px; color: #a5b4fc; font-style: italic; font-weight: 500; line-height: 1.3;">
+                                            Turning on autobidding from here will not apply any bid or time limit
+                                        </div>
                                     </a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="/logout"><i
-                                            class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="/skills">
+                                        <i class="fas fa-heart me-2 text-center" style="width: 20px"></i>
+                                        Skills
+                                    </a>
+                                    <a class="dropdown-item" href="/skills-sets">
+                                        <i class="fas fa-layer-group me-2 text-center" style="width: 20px"></i>
+                                        Skill Sets
+                                    </a>
+                                    <a class="dropdown-item" href="/countries">
+                                        <i class="fas fa-flag me-2 text-center" style="width: 20px"></i>
+                                        Countries
+                                    </a>
+                                    <a class="dropdown-item" href="/client-stats">
+                                        <i class="fas fa-filter me-2 text-center" style="width: 20px"></i>
+                                        Client Stats
+                                    </a>
+                                    <a class="dropdown-item" href="/budget">
+                                        <i class="fas fa-dollar-sign me-2 text-center" style="width: 20px"></i>
+                                        Project Budget
+                                    </a>
+                                    <a class="dropdown-item" href="/bidPrice">
+                                        <i class="fas fa-gavel me-2 text-center" style="width: 20px"></i>
+                                        Bid Price
+                                    </a>
+                                    <a class="dropdown-item" href="/period">
+                                        <i class="far fa-clock me-2 text-center" style="width: 20px"></i>
+                                        Project Period
+                                    </a>
+                                    <a class="dropdown-item" href="/timeSetting">
+                                        <i class="far fa-clock me-2 text-center" style="width: 20px"></i>
+                                        Time Setting
+                                    </a>
+                                    <a class="dropdown-item" href="/tcats">
+                                        <i class="fas fa-sitemap me-2 text-center" style="width: 20px"></i>
+                                        Template Categories
+                                    </a>
+                                    <a class="dropdown-item" href="/temp">
+                                        <i class="fas fa-list-ul me-2 text-center" style="width: 20px"></i>
+                                        Templates
+                                    </a>
+                                    <a class="dropdown-item" href="/passChange">
+                                        <i class="fas fa-user-lock me-2 text-center" style="width: 20px"></i>
+                                        Change Password
+                                    </a>
+                                    <a class="dropdown-item" href="/skills">
+                                        <i class="fas fa-cog me-2 text-center" style="width: 20px"></i>
+                                        More Settings
+                                    </a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fas fa-video me-2 text-center" style="width: 20px"></i>
+                                        Demo Video
+                                    </a>
+                                    <a class="dropdown-item" href="/guide">
+                                        <i class="fas fa-book me-2 text-center" style="width: 20px"></i>
+                                        Bidae Guide
+                                    </a>
+                                    <a class="dropdown-item" href="/logout">
+                                        <i class="fas fa-sign-out-alt me-2 text-center" style="width: 20px"></i>
+                                        Logout
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
 
-        <div class="container">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3 d-flex justify-content-between align-items-center">
-                    <h5 class="m-0 font-weight-bold text-primary">Template Categories</h5>
-                    <a href="/addtcat" class="btn btn-primary btn-sm">Add Category</a>
-                </div>
-                <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Always include?</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <% allCategory.forEach((category, index)=> { %>
-                                    <tr>
-                                        <td>
-                                            <%= category.name %>
-                                        </td>
-                                        <td>
-                                            <%= category.always_include ? 'Yes' : 'No' %>
-                                        </td>
-                                        <td style="width: 100px">
-                                            <div class="dropdown">
-                                                <button class="btn btn-primary dropdown-toggle" type="button"
-                                                    id="dropdownMenuButton_<%= index %>" data-bs-toggle="dropdown"
-                                                    aria-haspopup="true" aria-expanded="false">
-                                                    Actions
-                                                </button>
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton_<%= index %>">
-                                                    <a class="dropdown-item" href="/moveUp/<%= category._id %>">Move Up</a>
-                                                    <a class="dropdown-item" href="/moveDown/<%= category._id %>">Move
-                                                        Down</a>
-                                                    <a class="dropdown-item text-danger"
-                                                        href="/deleteTCat/<%= category._id %>"
-                                                        onclick="return confirm('Are you sure you want to delete this?')">Delete</a>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <% }); %>
-                            </tbody>
-                        </table>
+                <div class="container-fluid">
+                    <!-- Welcome Alert -->
+                    <div class="welcome-alert mb-4">
+                        <div class="alert alert-success alert-dismissible fade show p-0">
+                            <div class="px-4 py-3">
+                                <h4 class="alert-heading mt-2">Welcome to Bidae!</h4>
+                                <p style="font-size: 17px;" class="mb-2">Please note your Bidae username is: <strong><%= user.username %></strong></p>
+                                <p class="mb-2"><a href="#" class="text-decoration-underline">Click here to watch complete demo video of Bidae</a></p>
+                                <p class="mb-0">Your 5-days free trial subscription has started.</p>
+                                <p class="mb-0"><strong id="show-more-btn" style="cursor: pointer;">Click show more to view contact details.</strong></p>
+                            </div>
+                            <div class="px-4 pb-3 welcome-details" style="display: none;">
+                                <div>
+                                    <p class="mb-3">Use this free trial period to explore all the features of Bidae.</p>
+                                    <p class="mb-0">Follow these three important steps for getting started and making the most of your Bidae experience:</p>
+                                    <p class="mb-0 ms-3"><strong><a href="/skills">1- Select project skills</a></strong> to stay notified with newly posted projects on which you love to work.</p>
+                                    <p class="mb-0 ms-3"><strong><a href="/temp">2- Write awesome proposals</a></strong> to take full advantage of quick and auto bidding using Bidae.</p>
+                                    <p class="mb-3 ms-3"><strong><a href="/search">3- Start Autobidding</a></strong> and let Bidae place bid on newly posted projects within seconds.</p>
+                                    <p class="mb-0">For contact detail verification, queries or payment information, please contact us at:</p>
+                                    <p class="mb-0 ms-3">• Whatsapp: <strong><a href=""><%= adminPhone %></a></strong></p>
+                                    <p class="mb-0 ms-3">• Email: <strong><a href="mailto:<%= adminEmail %>"><%= adminEmail %></a></strong></p>
+                                    <p class="mb-0 ms-3">• Skype: <strong><%= adminSkype %></strong></p>
+                                    <p class="mb-3 ms-3">• Telegram: <strong><a href=""><%= adminTelegram %></a></strong></p>
+                                    <p class="mb-2"><a href="/guide">Click here to read guide to help understand Bidae</a></p>
+                                    <p class="mb-0">Happy bidding</p>
+                                </div>
+                            </div>
+                            <button type="button" class="btn-close btn-close-white me-3 mt-3" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+
+                    <!-- Contact Alert -->
+                    <div class="contact-alert mb-4">
+                        <div class="alert p-4 text-white rounded shadow-sm">
+                            <p class="mb-1">You currently have a limit of 50 bids. But don't worry, by verifying your contact details, you can unlock 500 bids! 🚀</p>
+                            <p class="mb-1">It's simple, just contact us at any of these:</p>
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-6 col-md-8 order-md-0 order-lg-0">
+                                    <p class="mb-0 ms-3" style="font-size: 14px">• Whatsapp: <a href="" class="text-white"><%= adminPhone %></a></p>
+                                </div>
+                                <div class="col-xl-4 col-lg-6 col-md-8 order-md-2 order-lg-0">
+                                    <p class="mb-0 ms-3" style="font-size: 14px">• Email: <a href="mailto:<%= adminEmail %>" class="text-white"><%= adminEmail %></a></p>
+                                </div>
+                                <div class="col-xl-2 col-lg-6 col-md-4 order-md-1 order-lg-0">
+                                    <p class="mb-0 ms-3" style="font-size: 14px">• Telegram: <a href="" class="text-white"><%= adminTelegram %></a></p>
+                                </div>
+                                <div class="col-xl-2 col-lg-6 col-md-4 order-md-1 order-lg-0">
+                                    <p class="mb-0 ms-3" style="font-size: 14px">• Skype: <a href="" class="text-white"><%= adminSkype %></a></p>
+                                </div>
+                            </div>
+                            <p class="mt-2 mb-0">Bonus: Get FREE AI bids when you contact us! 🎉</p>
+                        </div>
+                    </div>
+
+                    <!-- Main Content -->
+                    <div class="container-fluid">
+                        <a href="javascript:;" class="setting-collpase-btn">Show Settings Menu</a>
+                        <div class="setting-container mb-4">
+                            <!-- Settings Sidebar -->
+                            <div class="setting-sidebar">
+                                <h5 class="h5 text-white">Settings</h5>
+                                <div class="setting-item-container">
+                                    <a class="setting-item" href="/skills">
+                                        <i class="fas fa-heart"></i>
+                                        <span>Skills</span>
+                                    </a>
+                                    <a class="setting-item" href="/skills-sets">
+                                        <i class="fas fa-layer-group"></i>
+                                        <span>Skill Sets</span>
+                                    </a>
+                                    <a class="setting-item" href="/countries">
+                                        <i class="fas fa-flag"></i>
+                                        <span>Countries</span>
+                                    </a>
+                                    <a class="setting-item" href="/client-stats">
+                                        <i class="fas fa-filter"></i>
+                                        <span>Client Stats</span>
+                                    </a>
+                                    <a class="setting-item" href="/budget">
+                                        <i class="fas fa-dollar-sign"></i>
+                                        <span>Project Budget</span>
+                                    </a>
+                                    <a class="setting-item" href="/bidPrice">
+                                        <i class="fas fa-gavel"></i>
+                                        <span>Bid Price</span>
+                                    </a>
+                                    <a class="setting-item" href="/period">
+                                        <i class="far fa-clock"></i>
+                                        <span>Project Period</span>
+                                    </a>
+                                    <a class="setting-item" href="/timeSetting">
+                                        <i class="far fa-clock"></i>
+                                        <span>Time Setting</span>
+                                    </a>
+                                    <a class="setting-item active" href="/tcats">
+                                        <i class="fas fa-sitemap"></i>
+                                        <span>Template Categories</span>
+                                    </a>
+                                    <a class="setting-item" href="/temp">
+                                        <i class="fas fa-list-ul"></i>
+                                        <span>Templates</span>
+                                    </a>
+                                    <a class="setting-item" href="/passChange">
+                                        <i class="fas fa-user-lock"></i>
+                                        <span>Change Password</span>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <!-- Main Content -->
+                            <div class="setting-content">
+                                <div class="card shadow">
+                                    <div class="card-header py-3 d-flex align-items-center justify-content-between flex-wrap">
+                                        <h5 class="h5 m-0 text-primary mb-2 mb-sm-0">Template Categories</h5>
+                                        <h6 class="m-0 font-weight-bold text-primary">
+                                            <a href="/addtcat" class="btn btn-primary btn-sm">Add Category</a>
+                                        </h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered dt-responsive nowrap" id="table-list" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Always include?</th>
+                                                        <th>Actions</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <% allCategory.forEach((category, index) => { %>
+                                                    <tr>
+                                                        <td><%= category.name %></td>
+                                                        <td><%= category.always_include ? 'Yes' : 'No' %></td>
+                                                        <td>
+                                                            <div class="dropdown mb-0">
+                                                                <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton_<%= index %>" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                    Actions
+                                                                </button>
+                                                                <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton_<%= index %>">
+                                                                    <a class="dropdown-item move-up" href="/moveUp/<%= category._id %>">Move Up</a>
+                                                                    <a class="dropdown-item move-down" href="/moveDown/<%= category._id %>">Move Down</a>
+                                                                    <a class="dropdown-item text-danger" href="/deleteTCat/<%= category._id %>" onclick="return confirm('Are you sure you want to delete this?')">Delete</a>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <% }); %>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -273,15 +808,88 @@
     </div>
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.bidman.co/app_assets/js/toastr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
-
+    <script src="https://cdn.datatables.net/responsive/2.4.1/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.4.1/js/responsive.bootstrap5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    
     <script>
-        $(document).ready(function () {
-            $('#dataTable').DataTable();
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create animated stars
+            const starsContainer = document.getElementById('stars-container');
+            const starsCount = 100;
+
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                const size = Math.random() * 2 + 1;
+                const duration = Math.random() * 3 + 2;
+                const delay = Math.random() * 5;
+
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.setProperty('--duration', `${duration}s`);
+                star.style.setProperty('--delay', `${delay}s`);
+
+                starsContainer.appendChild(star);
+            }
+            
+            // Initialize DataTable with responsive features
+            var datatable = $('#table-list').DataTable({
+                responsive: true,
+                autoWidth: false,
+                order: [[0, "asc"]],
+                columnDefs: [
+                    { orderable: false, searchable: false, targets: [2] },
+                    { responsivePriority: 1, targets: 0 },
+                    { responsivePriority: 2, targets: 2 },
+                    { responsivePriority: 3, targets: 1 }
+                ],
+                pageLength: 10,
+                lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+                language: {
+                    search: "_INPUT_",
+                    searchPlaceholder: "Search categories...",
+                    lengthMenu: "_MENU_ per page",
+                    info: "Showing _START_ to _END_ of _TOTAL_ categories",
+                    infoEmpty: "No categories found",
+                    infoFiltered: "(filtered from _MAX_ total categories)",
+                    zeroRecords: "No matching categories found"
+                }
+            });
+            
+            // Toggle settings sidebar on mobile
+            document.querySelector('.setting-collpase-btn').addEventListener('click', function() {
+                document.querySelector('.setting-container').classList.toggle('show-sidebar');
+                this.textContent = document.querySelector('.setting-container').classList.contains('show-sidebar') 
+                    ? 'Hide Settings Menu' 
+                    : 'Show Settings Menu';
+            });
+            
+            // Show/hide welcome details
+            document.getElementById('show-more-btn').addEventListener('click', function() {
+                const detailsSection = document.querySelector('.welcome-details');
+                if (detailsSection.style.display === 'none') {
+                    detailsSection.style.display = 'block';
+                    this.textContent = 'Hide details';
+                } else {
+                    detailsSection.style.display = 'none';
+                    this.textContent = 'Click show more to view contact details.';
+                }
+            });
+            
+            // Adjust table layout on window resize
+            window.addEventListener('resize', function() {
+                datatable.columns.adjust().responsive.recalc();
+            });
         });
     </script>
 </body>

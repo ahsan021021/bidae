@@ -352,7 +352,7 @@ router.get("/authorize", (req, res) => {
   const redirectUri = process.env.redirectUri;
 
   const prompt = "select_account consent";
-  const advancedScopes = "2 6";
+  const advancedScopes = "1 2 3 6";
   const authorizationUrl = `${oauthUri}?response_type=code&client_id=${clientId}&redirect_uri=${redirectUri}&scope=basic&prompt=${prompt}&advanced_scopes=${advancedScopes}&state=${state}`;
   res.redirect(authorizationUrl);
 });
@@ -700,7 +700,7 @@ const getSelfData = async (data) => {
 
 
 // router.get("/myBids", sessionChecker, async (req, res) => {
-//   // const url = "https://www.freelancer.com/api/users/0.1/self/jobs/";
+//   // const url = "https://www.freelancer-sandbox.com/api/users/0.1/self/jobs/";
 //   // let id = req.session.user._id;
 //   // let user = await Users.findOne({ _id: id });
 //   // // let accessToken = user.access_token;
@@ -747,7 +747,7 @@ const getSelfData = async (data) => {
 //   console.error("Error finding user:", err);
 //   // Handle error
 // });
-// //   const url = 'https://www.freelancer.com/api/users/0.1/self/jobs/';
+// //   const url = 'https://www.freelancer-sandbox.com/api/users/0.1/self/jobs/';
 
 // // // Assuming you have already retrieved the access token, user ID, and user skills
 // // const id = req.session.user._id;
@@ -1415,7 +1415,7 @@ async function updateBidsAllowed(userId, newBidsAllowed) {
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 router.get("/createJob", sessionChecker, async (req, res) => {
-  // const url = "https://www.freelancer.com/api/users/0.1/self/jobs/";
+  // const url = "https://www.freelancer-sandbox.com/api/users/0.1/self/jobs/";
   // let id = req.session.user._id;
   // let user = await Users.findOne({ _id: id });
   // // let accessToken = user.access_token;
@@ -2555,7 +2555,7 @@ router.get("/skills", sessionChecker, async (req, res) => {
   // console.log(user)
   //   let access_token = user.access_token
 
-  //   const url = "https://freelancer.com/api/users/0.1/users/"+user.id;
+  //   const url = "https://freelancer-sandbox.com/api/users/0.1/users/"+user.id;
 
   //   const headers = {'freelancer-oauth-v1': access_token};
 
@@ -4727,7 +4727,7 @@ async function processAutoBids() {
                               
                               In addition to my C# programming skills, I have a strong background in Windows desktop environments. My experience aligns perfectly with decrypting and modifying complex programs. Though I may not have access to specific codes, my expertise in debugging and reverse engineering will be instrumental. My familiarity with AWS deployment and Linux System Administration further enhances my ability to optimize project performance and security.
                               
-                              Now, keeping these examples in mind, please create a proposal for a project I found on freelancer.com. Here are the details:
+                              Now, keeping these examples in mind, please create a proposal for a project I found on Freelancer.com. Here are the details:
                               Title of project: ${extractedData.title}
                               skills which are required for project: ${
                                 extractedData.jobNames
